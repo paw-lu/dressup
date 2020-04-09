@@ -166,7 +166,7 @@ def tests(session: Session) -> None:
     """Run the test suite."""
     args = session.posargs or ["--cov"]
     install_package(session)
-    install(session, "coverage[toml]", "pytest", "pytest-cov")
+    install(session, "coverage[toml]", "pytest", "pytest-cov", "pytest-mock")
     session.run("pytest", *args)
 
 
