@@ -34,11 +34,7 @@ def convert_characters(
         A dictionary where the keys are unicode character types and the
         values are the converted
     """
-    alphabet = "abcdefghijklmnopqrstuvwxyz"
-    translator = {
-        "Circled": dict(zip(alphabet, "ⓐⓑⓒⓓⓔⓕⓖⓗⓘⓙⓚⓛⓜⓝⓞⓟⓠⓡⓢⓣⓤⓥⓦⓧⓨⓩ")),
-        "Negative circled": dict(zip(alphabet, "🅐🅑🅒🅓🅔🅕🅖🅗🅘🅙🅚🅛🅜🅝🅞🅟🅠🅡🅢🅣🅤🅥🅦🅧🅨🅩")),
-    }
+    translator = _read_translator()
     if isinstance(char_types, str):
         char_types = [char_types]
     if char_types is not None:
