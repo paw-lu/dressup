@@ -1,5 +1,22 @@
 """Convert unicode."""
-from typing import Dict, Iterable, Optional, Union
+import pathlib
+from typing import Any, Dict, Iterable, MutableMapping, Optional, Union
+
+import toml
+
+
+def _read_translator() -> MutableMapping[str, Any]:
+    """Read translator from config file.
+
+    Returns:
+        A dictionary where the keys are the unicode type, and the values
+        are nested dictionaries with the keys are typical characters and
+        the values are their converted unicode.
+    """
+    toml_path = pathlib.Path(__file__).parent / pathlib.Path("translator.toml")
+    toml_text = toml_path.read_text()
+    translator = toml.loads(toml_text)
+    return translator
 
 
 def convert_characters(
