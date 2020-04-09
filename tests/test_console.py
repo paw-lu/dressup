@@ -39,3 +39,10 @@ def test_cli_conversion_succeeds(runner: CliRunner) -> None:
     result = runner.invoke(console.app, ["hello"])
     exit_code = result.exit_code
     assert exit_code == 0
+
+
+def test_cli_conversion_output(runner: CliRunner) -> None:
+    """It converts the characters."""
+    result = runner.invoke(console.app, ["hello"])
+    output = result.stdout
+    assert output == "\nCircled\t\tⓗⓔⓛⓛⓞ\n"
