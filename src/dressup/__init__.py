@@ -1,4 +1,6 @@
 """Dress up."""
+from .convert import convert_characters
+
 try:
     from importlib.metadata import version, PackageNotFoundError  # type: ignore
 except ImportError:  # pragma: no cover
@@ -9,3 +11,5 @@ try:
     __version__ = version(__name__)
 except PackageNotFoundError:  # pragma: no cover
     __version__ = "unknown"
+
+__all__ = ["convert_characters"]
