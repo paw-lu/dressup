@@ -2,6 +2,7 @@
 import typer
 
 from . import __version__
+from . import convert
 
 app = typer.Typer()
 
@@ -26,5 +27,9 @@ def main(
     ),
 ) -> None:
     """Dress up your unicode!"""
-    if version:
-        typer.echo(f"Dress up version: {__version__}")
+    converted_characters = convert.convert_characters(characters)
+    for character_type, converted_character in converted_characters.items():
+        title = typer.style(f"\n{character_type}", fg=typer.colors.MAGENTA, bold=True)
+        subject = typer.style(f"\t\t{converted_character}")
+        typer.echo(title + subject)
+    pass
