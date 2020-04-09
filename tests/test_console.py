@@ -43,6 +43,7 @@ def test_cli_conversion_succeeds(runner: CliRunner) -> None:
     assert exit_code == 0
 
 
+# TODO: Add parameterized version of this test for different options
 def test_cli_conversion_output(runner: CliRunner) -> None:
     """It converts the characters."""
     result = runner.invoke(console.app, ["hello"])
