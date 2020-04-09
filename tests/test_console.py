@@ -25,3 +25,10 @@ def test_version(runner: CliRunner) -> None:
     result = runner.invoke(console.app, ["--version"])
     output = result.stdout
     assert output == f"Dress up version: {dressup.__version__}\n"
+
+
+def test_cli_conversion_succeeds(runner: CliRunner) -> None:
+    """It exits with a code of zero when an argument is provided."""
+    result = runner.invoke(console.app, ["hello"])
+    exit_code = result.exit_code
+    assert exit_code == 0
