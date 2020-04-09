@@ -923,7 +923,7 @@ pbr = ">=2.0.0,<2.1.0 || >2.1.0"
 six = ">=1.10.0"
 
 [[package]]
-category = "dev"
+category = "main"
 description = "Python Library for Tom's Obvious, Minimal Language"
 name = "toml"
 optional = false
@@ -1060,7 +1060,7 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["jaraco.itertools", "func-timeout"]
 
 [metadata]
-content-hash = "e43fb217a37ac48e164eceb22c465be67b8bca1521c56d6c039e250e255b92eb"
+content-hash = "d27485ec875ad8c7f35140fe816a768e7e30eb053b57d1274e7301034d9f8efe"
 python-versions = "^3.6"
 
 [metadata.files]
