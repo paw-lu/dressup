@@ -49,9 +49,13 @@ def test_cli_conversion_output(runner: CliRunner) -> None:
     result = runner.invoke(console.app, ["hello"])
     actual_output = result.stdout
     expected_output = """
-    Circled\t\t\tⓗⓔⓛⓛⓞ
+    Circled
 
-    Negative circled\t\t\t🅗🅔🅛🅛🅞
+    ⓗⓔⓛⓛⓞ
+
+    Negative circled
+
+    🅗🅔🅛🅛🅞
     """
     expected_output = textwrap.dedent(expected_output)
     assert actual_output == expected_output
