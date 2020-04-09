@@ -16,6 +16,7 @@ Changelog = "https://github.com/pscosta5/dressup/releases"
 python = "^3.6"
 importlib-metadata = {version = "^1.5.0", python = "<3.8"}
 typer = "^0.1.1"
+colorama = "^0.4.3"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.3.2"
