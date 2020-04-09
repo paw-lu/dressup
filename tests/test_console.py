@@ -20,6 +20,13 @@ def test_main_fails(runner: CliRunner) -> None:
     assert exit_code == 2
 
 
+def test_version_succeeds(runner: CliRunner) -> None:
+    """It exits with a status code of zero when "--version" is called."""
+    result = runner.invoke(console.app, ["--version"])
+    exit_code = result.exit_code
+    assert exit_code == 0
+
+
 def test_version_output(runner: CliRunner) -> None:
     """It returns a version."""
     result = runner.invoke(console.app, ["--version"])
