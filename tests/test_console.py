@@ -14,9 +14,9 @@ def runner() -> CliRunner:
 
 
 def test_main_succeeds(runner: CliRunner) -> None:
-    """It exits with a status code of zero."""
+    """It exits with a status code of two."""
     result = runner.invoke(console.app)
-    assert result.exit_code == 0
+    assert result.exit_code == 2
 
 
 def test_version(runner: CliRunner) -> None:
