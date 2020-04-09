@@ -5,4 +5,4 @@ from dressup import convert
 def test_converter() -> None:
     """It converts "hello" to ⓗⓔⓛⓛⓞ."""
     converted_characters = convert.convert_characters("hello")
-    assert {"Circled": "ⓗⓔⓛⓛⓞ"} == converted_characters
+    assert {"Circled": "ⓗⓔⓛⓛⓞ", "Negative circled": "🅗🅔🅛🅛🅞"} == converted_characters
