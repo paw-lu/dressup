@@ -1,4 +1,6 @@
 """Test cases for the console module."""
+import textwrap
+
 import pytest
 import typer.testing
 from typer.testing import CliRunner
@@ -44,5 +46,11 @@ def test_cli_conversion_succeeds(runner: CliRunner) -> None:
 def test_cli_conversion_output(runner: CliRunner) -> None:
     """It converts the characters."""
     result = runner.invoke(console.app, ["hello"])
-    output = result.stdout
-    assert output == "\nCircled\t\tⓗⓔⓛⓛⓞ\n"
+    actual_output = result.stdout
+    expected_output = """
+    Circled\t\t\tⓗⓔⓛⓛⓞ
+
+    Negative circled\t\t\t🅗🅔🅛🅛🅞
+    """
+    expected_output = textwrap.dedent(expected_output)
+    assert actual_output == expected_output
