@@ -29,7 +29,6 @@ def main(
     """Dress up your unicode!"""
     converted_characters = convert.convert_characters(characters)
     for character_type, converted_character in converted_characters.items():
-        title = typer.style(f"\n{character_type}", fg=typer.colors.MAGENTA, bold=True)
-        subject = typer.style(f"\t\t\t{converted_character}")
-        typer.echo(title + subject)
+        typer.secho(f"\n{character_type}", fg=typer.colors.MAGENTA, bold=True)
+        typer.secho(f"\n{converted_character}")
     pass
