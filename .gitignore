@@ -1,3 +1,4 @@
+/.vscode
 /.coverage
 /.mypy_cache/
 /.nox/
