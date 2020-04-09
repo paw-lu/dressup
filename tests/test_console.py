@@ -22,4 +22,5 @@ def test_main_succeeds(runner: CliRunner) -> None:
 def test_version(runner: CliRunner) -> None:
     """It returns a version."""
     result = runner.invoke(console.app, ["--version"])
-    assert f"Dress up version: {dressup.__version__}" in result.stdout
+    output = result.stdout
+    assert output == f"Dress up version: {dressup.__version__}\n"
