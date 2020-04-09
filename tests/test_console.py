@@ -20,7 +20,7 @@ def test_main_fails(runner: CliRunner) -> None:
     assert exit_code == 2
 
 
-def test_version(runner: CliRunner) -> None:
+def test_version_output(runner: CliRunner) -> None:
     """It returns a version."""
     result = runner.invoke(console.app, ["--version"])
     output = result.stdout
