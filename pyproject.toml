@@ -8,6 +8,7 @@ readme = "README.md"
 homepage = "https://github.com/pscosta5/dressup"
 repository = "https://github.com/pscosta5/dressup"
 documentation = "https://dressup.readthedocs.io"
+include = ["dressup/translator.toml"]
 
 [tool.poetry.urls]
 Changelog = "https://github.com/pscosta5/dressup/releases"
@@ -42,6 +43,7 @@ sphinx-autodoc-typehints = "^1.10.3"
 recommonmark = "^0.6.0"
 pep8-naming = "^0.9.1"
 flake8-rst-docstrings = "^0.0.13"
+pytest-mock = "^3.0.0"
 
 [tool.poetry.scripts]
 dressup = "dressup.console:app"
