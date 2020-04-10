@@ -13,7 +13,7 @@ def mock_toml_loads(mocker: MockFixture) -> Mock:
         "Circled": dict(
             zip("abcdefghijklmnopqrstuvwxyz", "ⓐⓑⓒⓓⓔⓕⓖⓗⓘⓙⓚⓛⓜⓝⓞⓟⓠⓡⓢⓣⓤⓥⓦⓧⓨⓩ")
         ),
-        "Circled (neg)": dict(
+        "Negative circled": dict(
             zip("abcdefghijklmnopqrstuvwxyz", "🅐🅑🅒🅓🅔🅕🅖🅗🅘🅙🅚🅛🅜🅝🅞🅟🅠🅡🅢🅣🅤🅥🅦🅧🅨🅩")
         ),
     }
