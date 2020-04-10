@@ -3,24 +3,8 @@ from typing import Dict
 from unittest.mock import Mock
 
 import pytest
-from pytest_mock import MockFixture
 
 from dressup import convert
-
-
-@pytest.fixture
-def mock_toml_loads(mocker: MockFixture) -> Mock:
-    """Fixture for mocking toml.loads."""
-    mock = mocker.patch("toml.loads")
-    mock.return_value = {
-        "Circled": dict(
-            zip("abcdefghijklmnopqrstuvwxyz", "ⓐⓑⓒⓓⓔⓕⓖⓗⓘⓙⓚⓛⓜⓝⓞⓟⓠⓡⓢⓣⓤⓥⓦⓧⓨⓩ")
-        ),
-        "Circled (neg)": dict(
-            zip("abcdefghijklmnopqrstuvwxyz", "🅐🅑🅒🅓🅔🅕🅖🅗🅘🅙🅚🅛🅜🅝🅞🅟🅠🅡🅢🅣🅤🅥🅦🅧🅨🅩")
-        ),
-    }
-    return mock
 
 
 def test_read_translator(mock_toml_loads: Mock) -> None:
