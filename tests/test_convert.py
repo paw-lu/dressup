@@ -39,7 +39,7 @@ def test_read_translator(mock_toml_loads: Mock) -> None:
             "y": "ⓨ",
             "z": "ⓩ",
         },
-        "Circled (neg)": {
+        "Negative circled": {
             "a": "🅐",
             "b": "🅑",
             "c": "🅒",
