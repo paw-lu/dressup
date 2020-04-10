@@ -1,5 +1,6 @@
 """Test cases for the console module."""
 import textwrap
+from unittest.mock import Mock
 
 import pytest
 import typer.testing
@@ -36,7 +37,7 @@ def test_version_output(runner: CliRunner) -> None:
     assert output == f"Dress up version: {dressup.__version__}\n"
 
 
-def test_cli_conversion_succeeds(runner: CliRunner) -> None:
+def test_cli_conversion_succeeds(runner: CliRunner, mock_toml_loads: Mock) -> None:
     """It exits with a code of zero when an argument is provided."""
     result = runner.invoke(console.app, ["hello"])
     exit_code = result.exit_code
@@ -44,7 +45,7 @@ def test_cli_conversion_succeeds(runner: CliRunner) -> None:
 
 
 # TODO: Add parameterized version of this test for different options
-def test_cli_conversion_output(runner: CliRunner) -> None:
+def test_cli_conversion_output(runner: CliRunner, mock_toml_loads: Mock) -> None:
     """It converts the characters."""
     result = runner.invoke(console.app, ["hello"])
     actual_output = result.stdout
