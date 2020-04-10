@@ -16,11 +16,11 @@ def runner() -> CliRunner:
     return typer.testing.CliRunner()
 
 
-def test_main_fails(runner: CliRunner) -> None:
-    """It exits with a status code of two when there is no argument."""
+def test_main_succeeds(runner: CliRunner) -> None:
+    """It exits with a status code of 0."""
     result = runner.invoke(console.app)
     exit_code = result.exit_code
-    assert exit_code == 2
+    assert exit_code == 0
 
 
 def test_version_succeeds(runner: CliRunner) -> None:
