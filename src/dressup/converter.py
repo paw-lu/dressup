@@ -19,7 +19,7 @@ def _read_translator() -> MutableMapping[str, Any]:
     return translator
 
 
-def show_all(characters: str,) -> Dict[str, str]:
+def show_all(characters: str) -> Dict[str, str]:
     """Return all possible unicode conversions.
 
     Args:
@@ -38,3 +38,20 @@ def show_all(characters: str,) -> Dict[str, str]:
         for character_type in translator
     }
     return converted_characters
+
+
+def convert(characters: str, unicode_type: str) -> str:
+    """Convert characters to a Unicode character type.
+
+    Args:
+        characters (str): The characters to convert.
+        unicode_type (str): The type of Unicode character types to
+            convert to.
+
+    Returns:
+        The converted Unicode characters.
+    """
+    # TODO: Make this case-insensitive
+    translator = _read_translator()[unicode_type]
+    converted_character = "".join(translator[character] for character in characters)
+    return converted_character

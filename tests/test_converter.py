@@ -69,6 +69,12 @@ def test_read_translator(mock_toml_loads: Mock) -> None:
 
 
 def test_show_all(mock_toml_loads: Mock) -> None:
-    """It converts "hello" to ⓗⓔⓛⓛⓞ."""
+    """It converts "hello" to all possible Unicode types."""
     converted_characters = converter.show_all("hello")
     assert {"Circled": "ⓗⓔⓛⓛⓞ", "Negative circled": "🅗🅔🅛🅛🅞"} == converted_characters
+
+
+def test_convert(mock_toml_loads: Mock) -> None:
+    """It converts "hello" to the specified Unicode type."""
+    converted_character = converter.convert("hello", "Circled")
+    assert "ⓗⓔⓛⓛⓞ" == converted_character
