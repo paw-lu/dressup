@@ -22,7 +22,7 @@ def version_callback(value: bool) -> None:
 def main(
     characters: str = typer.Argument(None),
     unicode_type: str = typer.Option(
-        None, "--type", "-t", help="The type of Unicode characters to convert to."
+        None, "--type", "-t", help="The Unicode type to convert to."
     ),
     version: bool = typer.Option(
         None,

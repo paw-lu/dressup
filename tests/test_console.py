@@ -51,6 +51,31 @@ def test_help_succeeds(runner: CliRunner) -> None:
     assert exit_code == 0
 
 
+def test_help_message(runner: CliRunner) -> None:
+    """It gives a message when "--help" is called."""
+    result = runner.invoke(console.app, ["--help"])
+    output = result.stdout
+    help_message = "\n\n".join(output.split("\n\n")[1:3])
+    expected_message = (
+        "  Convert characters to different Unicode types.\n\n"
+        "  If --type is specified, convert to a specific type."
+    )
+    assert expected_message == help_message
+
+
+def test_help_parameter_descriptions(runner: CliRunner) -> None:
+    """It describes the parameters when "--help" is called."""
+    result = runner.invoke(console.app, ["--help"])
+    output = result.stdout
+    parameter_help = output.split("\n\n")[3]
+    expected_message = (
+        "Options:\n  -t, "
+        "--type TEXT                 The Unicode type to convert to.\n  "
+        "-v, --version                   Return the package version."
+    )
+    assert parameter_help.startswith(expected_message)
+
+
 def test_cli_conversion_succeeds(runner: CliRunner, mock_toml_loads: Mock) -> None:
     """It exits with a code of zero when an argument is provided."""
     result = runner.invoke(console.app, ["hello"])
