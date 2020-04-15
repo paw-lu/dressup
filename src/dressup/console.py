@@ -18,6 +18,9 @@ def version_callback(value: bool) -> None:
 @app.command()
 def main(
     characters: str = typer.Argument(None),
+    unicode_type: str = typer.Option(
+        None, "--type", "-t", help="The type of Unicode characters to convert to."
+    ),
     version: bool = typer.Option(
         None,
         "--version",
@@ -27,18 +30,20 @@ def main(
         is_eager=True,
     ),
 ) -> None:
-    """Dress up your unicode!
+    """Convert characters to different Unicode types.
 
-    Args:
-        characters (str): The characters to convert.
-        version (bool): Whether to return the package version. Will
-            supersede all other arguments.
+    If --type is specified, convert to a specific type.
     """
     if characters is None:
         typer.echo("No characters provided to convert.")
-    else:
+        pass
+    elif unicode_type is None:
         converted_characters = converter.show_all(characters)
         for character_type, converted_character in converted_characters.items():
             typer.secho(f"\n{character_type}", fg=typer.colors.MAGENTA, bold=True)
             typer.secho(f"\n{converted_character}")
+        pass
+    else:
+        converted_characters = converter.convert(characters, unicode_type=unicode_type)
+        typer.echo(converted_characters)
         pass

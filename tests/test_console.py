@@ -67,3 +67,11 @@ def test_cli_conversion_output(runner: CliRunner, mock_toml_loads: Mock) -> None
     """
     expected_output = textwrap.dedent(expected_output)
     assert actual_output == expected_output
+
+
+def test_cli_option(runner: CliRunner, mock_toml_loads: Mock) -> None:
+    """It converts the characters to the specified type."""
+    result = runner.invoke(console.app, ["hello", "--type=Circled"])
+    actual_output = result.stdout
+    expected_output = """ⓗⓔⓛⓛⓞ\n"""
+    assert expected_output == actual_output
