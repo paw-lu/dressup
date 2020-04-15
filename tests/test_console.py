@@ -44,6 +44,13 @@ def test_version_output(runner: CliRunner) -> None:
     assert output == f"Dress up version: {dressup.__version__}\n"
 
 
+def test_help_succeeds(runner: CliRunner) -> None:
+    """It exits with a status code of zero when "--help" is called."""
+    result = runner.invoke(console.app, ["--help"])
+    exit_code = result.exit_code
+    assert exit_code == 0
+
+
 def test_cli_conversion_succeeds(runner: CliRunner, mock_toml_loads: Mock) -> None:
     """It exits with a code of zero when an argument is provided."""
     result = runner.invoke(console.app, ["hello"])
