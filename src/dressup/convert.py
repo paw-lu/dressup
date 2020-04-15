@@ -1,6 +1,6 @@
 """Convert unicode."""
 import pathlib
-from typing import Any, Dict, Iterable, MutableMapping, Optional, Union
+from typing import Any, Dict, MutableMapping
 
 import toml
 
@@ -19,37 +19,22 @@ def _read_translator() -> MutableMapping[str, Any]:
     return translator
 
 
-def show_all(
-    characters: str, char_types: Optional[Union[str, Iterable[str]]] = None
-) -> Dict[str, str]:
-    """Convert characters to different unicode types.
+def show_all(characters: str,) -> Dict[str, str]:
+    """Return all possible unicode conversions.
 
     Args:
         characters (str): The characters to convert.
-        char_types (str or iterable of strings): The type of unicode
-            character to convert to. Options are "circled" and
-            "negative circled". If left as None will return all types.
 
     Returns:
         A dictionary where the keys are unicode character types and the
         values are the converted.
     """
     translator = _read_translator()
-    if isinstance(char_types, str):
-        char_types = [char_types]
-    if char_types is not None:
-        char_types = [
-            f"{char_type[0].upper()}{char_type[1:].lower()}" for char_type in char_types
-        ]
-    else:
-        char_types = ["Circled", "Negative circled"]
-
     converted_characters = {
         character_type: "".join(
             translator[character_type].get(character, character)
             for character in characters
         )
-        for character_type in char_types
+        for character_type in translator
     }
-    # TODO: Add exception here for missing key
     return converted_characters
