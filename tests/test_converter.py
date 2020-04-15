@@ -67,7 +67,7 @@ def test_read_translator(mock_toml_loads: Mock) -> None:
             "z": "🅩",
         },
     }
-    assert expected_translator == actual_translator
+    assert actual_translator == expected_translator
 
 
 @pytest.mark.parametrize(
@@ -81,7 +81,7 @@ def test_read_translator(mock_toml_loads: Mock) -> None:
 def test_show_all(mock_toml_loads: Mock, characters: str, expected_output: str) -> None:
     """It converts characterse to all possible Unicode types."""
     converted_characters = converter.show_all(characters=characters)
-    assert expected_output == converted_characters
+    assert converted_characters == expected_output
 
 
 @pytest.mark.parametrize(
@@ -100,4 +100,4 @@ def test_convert(
     converted_character = converter.convert(
         characters=characters, unicode_type=unicode_type
     )
-    assert expected_output == converted_character
+    assert converted_character == expected_output

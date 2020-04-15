@@ -94,4 +94,4 @@ def test_cli_option(
     """It converts the characters to the specified type."""
     result = runner.invoke(console.app, [characters, f"--type={unicode_type}"])
     actual_output = result.stdout
-    assert expected_output == actual_output
+    assert actual_output == expected_output
