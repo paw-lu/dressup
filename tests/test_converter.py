@@ -70,10 +70,18 @@ def test_read_translator(mock_toml_loads: Mock) -> None:
     assert expected_translator == actual_translator
 
 
-def test_show_all(mock_toml_loads: Mock) -> None:
-    """It converts "hello" to all possible Unicode types."""
-    converted_characters = converter.show_all("hello")
-    assert {"Circled": "ⓗⓔⓛⓛⓞ", "Negative circled": "🅗🅔🅛🅛🅞"} == converted_characters
+@pytest.mark.parametrize(
+    "characters, expected_output",
+    [
+        ("hello", {"Circled": "ⓗⓔⓛⓛⓞ", "Negative circled": "🅗🅔🅛🅛🅞"}),
+        ("he(lo", {"Circled": "ⓗⓔ(ⓛⓞ", "Negative circled": "🅗🅔(🅛🅞"}),
+        ("💦a", {"Circled": "💦ⓐ", "Negative circled": "💦🅐"}),
+    ],
+)
+def test_show_all(mock_toml_loads: Mock, characters: str, expected_output: str) -> None:
+    """It converts characterse to all possible Unicode types."""
+    converted_characters = converter.show_all(characters=characters)
+    assert expected_output == converted_characters
 
 
 @pytest.mark.parametrize(
