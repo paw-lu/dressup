@@ -15,6 +15,9 @@ def version_callback(value: bool) -> None:
     pass
 
 
+# TODO: Add a command that lists all types
+# TODO: Add autocompletion for options:
+# https://typer.tiangolo.com/tutorial/options/autocompletion/
 @app.command()
 def main(
     characters: str = typer.Argument(None),
