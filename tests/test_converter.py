@@ -71,6 +71,15 @@ def test_read_translator(mock_toml_loads: Mock) -> None:
 
 
 @pytest.mark.parametrize(
+    "name, expected_output",
+    [("circled", "Circled"), ("negative_circled", "Negative circled")],
+)
+def test_format_names(name: str, expected_output: str) -> None:
+    """It formats the name."""
+    assert converter._format_names(name) == expected_output
+
+
+@pytest.mark.parametrize(
     "characters, expected_output",
     [
         ("hello", {"Circled": "ⓗⓔⓛⓛⓞ", "Negative circled": "🅗🅔🅛🅛🅞"}),
