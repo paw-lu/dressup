@@ -1,5 +1,5 @@
 """Dress up."""
-from .convert import convert_characters
+from .convert import show_all
 
 try:
     from importlib.metadata import version, PackageNotFoundError  # type: ignore
@@ -12,4 +12,4 @@ try:
 except PackageNotFoundError:  # pragma: no cover
     __version__ = "unknown"
 
-__all__ = ["convert_characters"]
+__all__ = ["show_all"]

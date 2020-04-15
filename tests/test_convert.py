@@ -73,7 +73,7 @@ def test_read_translator(mock_toml_loads: Mock) -> None:
 
 def test_converter(mock_toml_loads: Mock) -> None:
     """It converts "hello" to ⓗⓔⓛⓛⓞ."""
-    converted_characters = convert.convert_characters("hello")
+    converted_characters = convert.show_all("hello")
     assert {"Circled": "ⓗⓔⓛⓛⓞ", "Negative circled": "🅗🅔🅛🅛🅞"} == converted_characters
 
 
@@ -84,5 +84,5 @@ def test_paramaterized_converter(
     char_types: str, expected_output: Dict[str, str]
 ) -> None:
     """It converts "hello" to the specified unicode type."""
-    converted_characters = convert.convert_characters("hello", char_types=char_types)
+    converted_characters = convert.show_all("hello", char_types=char_types)
     assert expected_output == converted_characters

@@ -19,7 +19,7 @@ def _read_translator() -> MutableMapping[str, Any]:
     return translator
 
 
-def convert_characters(
+def show_all(
     characters: str, char_types: Optional[Union[str, Iterable[str]]] = None
 ) -> Dict[str, str]:
     """Convert characters to different unicode types.
@@ -32,7 +32,7 @@ def convert_characters(
 
     Returns:
         A dictionary where the keys are unicode character types and the
-        values are the converted
+        values are the converted.
     """
     translator = _read_translator()
     if isinstance(char_types, str):

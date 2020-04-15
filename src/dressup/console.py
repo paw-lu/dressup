@@ -36,7 +36,7 @@ def main(
     if characters is None:
         typer.echo("No characters provided to convert.")
     else:
-        converted_characters = convert.convert_characters(characters)
+        converted_characters = convert.show_all(characters)
         for character_type, converted_character in converted_characters.items():
             typer.secho(f"\n{character_type}", fg=typer.colors.MAGENTA, bold=True)
             typer.secho(f"\n{converted_character}")
