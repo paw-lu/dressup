@@ -10,9 +10,10 @@ def _read_translator() -> MutableMapping[str, Any]:
     """Read translator from config file.
 
     Returns:
-        A dictionary where the keys are the unicode type, and the values
-        are nested dictionaries with the keys are typical characters and
-        the values are their converted unicode.
+        MutableMapping[str, Any]: A dictionary where the keys are the
+        unicode type, and the values are nested dictionaries with the
+        keys are typical characters and the values are their converted
+        unicode.
     """
     toml_path = pathlib.Path(__file__).parent / pathlib.Path("translator.toml")
     toml_text = toml_path.read_text()
@@ -39,8 +40,8 @@ def show_all(characters: str) -> Dict[str, str]:
         characters (str): The characters to convert.
 
     Returns:
-        A dictionary where the keys are unicode character types and the
-        values are the converted.
+        Dict(str, str): A dictionary where the keys are unicode
+        character types and the values are the converted.
     """
     translator = _read_translator()
     converted_characters = {
@@ -77,7 +78,7 @@ def convert(characters: str, unicode_type: str) -> str:
             convert to.
 
     Returns:
-        The converted Unicode characters.
+        str: The converted Unicode characters.
     """
     # TODO: Make this case-insensitive
     translator = _read_translator()[unicode_type]
