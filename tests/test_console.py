@@ -51,7 +51,6 @@ def test_cli_conversion_succeeds(runner: CliRunner, mock_toml_loads: Mock) -> No
     assert exit_code == 0
 
 
-# TODO: Add parameterized version of this test for different options
 def test_cli_conversion_output(runner: CliRunner, mock_toml_loads: Mock) -> None:
     """It converts the characters."""
     result = runner.invoke(console.app, ["hello"])
@@ -69,10 +68,23 @@ def test_cli_conversion_output(runner: CliRunner, mock_toml_loads: Mock) -> None
     assert actual_output == expected_output
 
 
-# TODO: Paramaterize
-def test_cli_option(runner: CliRunner, mock_toml_loads: Mock) -> None:
+@pytest.mark.parametrize(
+    "characters, unicode_type, expected_output",
+    [
+        ("hello", "Circled", "ⓗⓔⓛⓛⓞ\n"),
+        ("hello", "Negative circled", "🅗🅔🅛🅛🅞\n"),
+        ("he(lo", "Circled", "ⓗⓔ(ⓛⓞ\n"),
+        ("💦a", "Circled", "💦ⓐ\n"),
+    ],
+)
+def test_cli_option(
+    runner: CliRunner,
+    mock_toml_loads: Mock,
+    characters: str,
+    unicode_type: str,
+    expected_output: str,
+) -> None:
     """It converts the characters to the specified type."""
-    result = runner.invoke(console.app, ["hello", "--type=Circled"])
+    result = runner.invoke(console.app, [characters, f"--type={unicode_type}"])
     actual_output = result.stdout
-    expected_output = """ⓗⓔⓛⓛⓞ\n"""
     assert expected_output == actual_output
