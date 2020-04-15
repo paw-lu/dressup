@@ -26,9 +26,9 @@ def convert_characters(
 
     Args:
         characters (str): The characters to convert.
-        char_types (str or iterable of strings): The type of unicode character
-            to convert to. Options are "circled" and "negative circled".
-            If left as None will return all types.
+        char_types (str or iterable of strings): The type of unicode
+            character to convert to. Options are "circled" and
+            "negative circled". If left as None will return all types.
 
     Returns:
         A dictionary where the keys are unicode character types and the
