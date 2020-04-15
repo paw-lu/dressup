@@ -19,6 +19,18 @@ def _read_translator() -> MutableMapping[str, Any]:
     return translator
 
 
+def _format_names(name: str) -> str:
+    """Format dictionary key names to be human friendly.
+
+    Args:
+        name (str): The Unicode type name.
+
+    Returns:
+        str: The formatted Unicode type name.
+    """
+    return name[0].upper() + name[1:].replace("_", " ")
+
+
 def show_all(characters: str) -> Dict[str, str]:
     """Return all possible unicode conversions.
 
