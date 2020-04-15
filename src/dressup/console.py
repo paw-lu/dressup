@@ -21,7 +21,8 @@ def main(
     version: bool = typer.Option(
         None,
         "--version",
-        help="Return the package version." "",
+        "-v",
+        help="Return the package version.",
         callback=version_callback,
         is_eager=True,
     ),
