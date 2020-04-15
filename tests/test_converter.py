@@ -1,6 +1,8 @@
 """Test cases for the convert module."""
 from unittest.mock import Mock
 
+import pytest
+
 from dressup import converter
 
 
@@ -74,7 +76,20 @@ def test_show_all(mock_toml_loads: Mock) -> None:
     assert {"Circled": "ⓗⓔⓛⓛⓞ", "Negative circled": "🅗🅔🅛🅛🅞"} == converted_characters
 
 
-def test_convert(mock_toml_loads: Mock) -> None:
-    """It converts "hello" to the specified Unicode type."""
-    converted_character = converter.convert("hello", "Circled")
-    assert "ⓗⓔⓛⓛⓞ" == converted_character
+@pytest.mark.parametrize(
+    "characters, unicode_type, expected_output",
+    [
+        ("hello", "Circled", "ⓗⓔⓛⓛⓞ"),
+        ("hello", "Negative circled", "🅗🅔🅛🅛🅞"),
+        ("he(lo", "Circled", "ⓗⓔ(ⓛⓞ"),
+        ("💦a", "Circled", "💦ⓐ"),
+    ],
+)
+def test_convert(
+    mock_toml_loads: Mock, characters: str, unicode_type: str, expected_output: str
+) -> None:
+    """It converts characters to the specified Unicode type."""
+    converted_character = converter.convert(
+        characters=characters, unicode_type=unicode_type
+    )
+    assert expected_output == converted_character
