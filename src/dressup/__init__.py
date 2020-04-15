@@ -1,5 +1,5 @@
 """Dress up."""
-from .convert import show_all
+from .converter import show_all
 
 try:
     from importlib.metadata import version, PackageNotFoundError  # type: ignore

@@ -1,12 +1,12 @@
 """Test cases for the convert module."""
 from unittest.mock import Mock
 
-from dressup import convert
+from dressup import converter
 
 
 def test_read_translator(mock_toml_loads: Mock) -> None:
     """It reads the toml file."""
-    actual_translator = convert._read_translator()
+    actual_translator = converter._read_translator()
     expected_translator = {
         "Circled": {
             "a": "ⓐ",
@@ -70,5 +70,5 @@ def test_read_translator(mock_toml_loads: Mock) -> None:
 
 def test_converter(mock_toml_loads: Mock) -> None:
     """It converts "hello" to ⓗⓔⓛⓛⓞ."""
-    converted_characters = convert.show_all("hello")
+    converted_characters = converter.show_all("hello")
     assert {"Circled": "ⓗⓔⓛⓛⓞ", "Negative circled": "🅗🅔🅛🅛🅞"} == converted_characters
