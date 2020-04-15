@@ -1,5 +1,6 @@
 """Convert unicode."""
 import pathlib
+import re
 from typing import Any, Dict, MutableMapping
 
 import toml
@@ -50,6 +51,21 @@ def show_all(characters: str) -> Dict[str, str]:
         for character_type in translator
     }
     return converted_characters
+
+
+def _normalize_text(text_input: str) -> str:
+    """Normalize inputted text for easy dictionary matching.
+
+    Strips surrounding whitespace, changes all characters to lowercase,
+    and replaces inner whitespace with "_".
+
+    Args:
+        text_input (str): An inputted name.
+
+    Returns:
+        str: A normalized version of the name.
+    """
+    return re.sub(r"\s+", "_", text_input.strip().lower())
 
 
 def convert(characters: str, unicode_type: str) -> str:
