@@ -53,5 +53,7 @@ def convert(characters: str, unicode_type: str) -> str:
     """
     # TODO: Make this case-insensitive
     translator = _read_translator()[unicode_type]
-    converted_character = "".join(translator[character] for character in characters)
+    converted_character = "".join(
+        translator.get(character, character) for character in characters
+    )
     return converted_character
