@@ -17,7 +17,7 @@ def version_callback(value: bool) -> None:
 
 @app.command()
 def main(
-    characters: str = typer.Argument(None,),
+    characters: str = typer.Argument(None),
     version: bool = typer.Option(
         None,
         "--version",
