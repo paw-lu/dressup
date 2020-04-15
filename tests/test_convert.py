@@ -68,7 +68,7 @@ def test_read_translator(mock_toml_loads: Mock) -> None:
     assert expected_translator == actual_translator
 
 
-def test_converter(mock_toml_loads: Mock) -> None:
+def test_show_all(mock_toml_loads: Mock) -> None:
     """It converts "hello" to ⓗⓔⓛⓛⓞ."""
     converted_characters = converter.show_all("hello")
     assert {"Circled": "ⓗⓔⓛⓛⓞ", "Negative circled": "🅗🅔🅛🅛🅞"} == converted_characters
