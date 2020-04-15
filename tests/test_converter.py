@@ -10,7 +10,7 @@ def test_read_translator(mock_toml_loads: Mock) -> None:
     """It reads the toml file."""
     actual_translator = converter._read_translator()
     expected_translator = {
-        "Circled": {
+        "circled": {
             "a": "ⓐ",
             "b": "ⓑ",
             "c": "ⓒ",
@@ -38,7 +38,7 @@ def test_read_translator(mock_toml_loads: Mock) -> None:
             "y": "ⓨ",
             "z": "ⓩ",
         },
-        "Negative circled": {
+        "negative_circled": {
             "a": "🅐",
             "b": "🅑",
             "c": "🅒",

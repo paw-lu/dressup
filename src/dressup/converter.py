@@ -45,8 +45,8 @@ def show_all(characters: str) -> Dict[str, str]:
     """
     translator = _read_translator()
     converted_characters = {
-        character_type: "".join(
-            translator[character_type].get(character, character)
+        _format_names(character_type): "".join(
+            translator[_normalize_text(character_type)].get(character, character)
             for character in characters
         )
         for character_type in translator
@@ -81,6 +81,7 @@ def convert(characters: str, unicode_type: str) -> str:
         str: The converted Unicode characters.
     """
     # TODO: Make this case-insensitive
+    unicode_type = _normalize_text(unicode_type)
     translator = _read_translator()[unicode_type]
     converted_character = "".join(
         translator.get(character, character) for character in characters

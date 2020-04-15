@@ -1,4 +1,4 @@
-[Circled]
+[circled]
 a = "ⓐ"
 b = "ⓑ"
 c = "ⓒ"
@@ -36,7 +36,7 @@ z = "ⓩ"
 9 = "⑨"
 0 = "0"
 
-["Negative circled"]
+["negative circled"]
 a = "🅐"
 b = "🅑"
 c = "🅒"

@@ -10,10 +10,10 @@ def mock_toml_loads(mocker: MockFixture) -> Mock:
     """Fixture for mocking toml.loads."""
     mock = mocker.patch("toml.loads")
     mock.return_value = {
-        "Circled": dict(
+        "circled": dict(
             zip("abcdefghijklmnopqrstuvwxyz", "ⓐⓑⓒⓓⓔⓕⓖⓗⓘⓙⓚⓛⓜⓝⓞⓟⓠⓡⓢⓣⓤⓥⓦⓧⓨⓩ")
         ),
-        "Negative circled": dict(
+        "negative_circled": dict(
             zip("abcdefghijklmnopqrstuvwxyz", "🅐🅑🅒🅓🅔🅕🅖🅗🅘🅙🅚🅛🅜🅝🅞🅟🅠🅡🅢🅣🅤🅥🅦🅧🅨🅩")
         ),
     }
