@@ -80,7 +80,6 @@ def convert(characters: str, unicode_type: str) -> str:
     Returns:
         str: The converted Unicode characters.
     """
-    # TODO: Make this case-insensitive
     unicode_type = _normalize_text(unicode_type)
     translator = _read_translator()[unicode_type]
     converted_character = "".join(
