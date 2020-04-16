@@ -1,4 +1,4 @@
-"""Convert unicode."""
+"""Convert Unicode characters."""
 import pathlib
 import re
 from typing import Any, Dict, MutableMapping
