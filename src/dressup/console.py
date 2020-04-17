@@ -8,7 +8,14 @@ app = typer.Typer()
 
 
 def version_callback(value: bool) -> None:
-    """Return the package version."""
+    """Return the package version.
+
+    Args:
+        value (bool): Whether to return the version.
+
+    Raises:
+        Exit: Exits the command line interface.
+    """
     if value:
         typer.echo(f"Dress up version: {__version__}")
         raise typer.Exit()
