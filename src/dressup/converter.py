@@ -46,7 +46,7 @@ def show_all(characters: str) -> Dict[str, str]:
     translator = _read_translator()
     converted_characters = {
         _format_names(character_type): "".join(
-            translator[_normalize_text(character_type)].get(character, character)
+            translator[normalize_text(character_type)].get(character, character)
             for character in characters
         )
         for character_type in translator
@@ -54,7 +54,7 @@ def show_all(characters: str) -> Dict[str, str]:
     return converted_characters
 
 
-def _normalize_text(text_input: str) -> str:
+def normalize_text(text_input: str) -> str:
     """Normalize inputted text for easy dictionary matching.
 
     Strips surrounding whitespace, changes all characters to lowercase,
@@ -80,7 +80,7 @@ def convert(characters: str, unicode_type: str) -> str:
     Returns:
         str: The converted Unicode characters.
     """
-    unicode_type = _normalize_text(unicode_type)
+    unicode_type = normalize_text(unicode_type)
     translator = _read_translator()[unicode_type]
     converted_character = "".join(
         translator.get(character, character) for character in characters
