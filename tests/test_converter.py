@@ -37,6 +37,12 @@ def test_read_translator(mock_toml_loads: Mock) -> None:
             "x": "ⓧ",
             "y": "ⓨ",
             "z": "ⓩ",
+            "D": "Ⓓ",
+            "R": "Ⓡ",
+            "E": "Ⓔ",
+            "S": "Ⓢ",
+            "U": "Ⓤ",
+            "P": "Ⓟ",
         },
         "negative_circled": {
             "a": "🅐",
@@ -89,7 +95,7 @@ def test_format_names(name: str, expected_output: str) -> None:
 )
 def test_normalize_text(name: str, expected_output: str) -> None:
     """It normalizes the text."""
-    assert converter._normalize_text(name) == expected_output
+    assert converter.normalize_text(name) == expected_output
 
 
 @pytest.mark.parametrize(
