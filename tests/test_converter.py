@@ -81,7 +81,11 @@ def test_format_names(name: str, expected_output: str) -> None:
 
 @pytest.mark.parametrize(
     "name, expected_output",
-    [("Circled", "circled"), ("Negative circled", "negative_circled")],
+    [
+        ("Circled", "circled"),
+        ("Negative circled", "negative_circled"),
+        ("negative-circled", "negative_circled"),
+    ],
 )
 def test_normalize_text(name: str, expected_output: str) -> None:
     """It normalizes the text."""

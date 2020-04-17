@@ -66,7 +66,7 @@ def _normalize_text(text_input: str) -> str:
     Returns:
         str: A normalized version of the name.
     """
-    return re.sub(r"\s+", "_", text_input.strip().lower())
+    return re.sub(r"\s+", "_", text_input.strip().lower().replace("-", "_"))
 
 
 def convert(characters: str, unicode_type: str) -> str:
