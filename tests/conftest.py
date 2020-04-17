@@ -11,7 +11,9 @@ def mock_toml_loads(mocker: MockFixture) -> Mock:
     mock = mocker.patch("toml.loads")
     mock.return_value = {
         "circled": dict(
-            zip("abcdefghijklmnopqrstuvwxyz", "ⓐⓑⓒⓓⓔⓕⓖⓗⓘⓙⓚⓛⓜⓝⓞⓟⓠⓡⓢⓣⓤⓥⓦⓧⓨⓩ")
+            zip(
+                "abcdefghijklmnopqrstuvwxyzDRESSUP", "ⓐⓑⓒⓓⓔⓕⓖⓗⓘⓙⓚⓛⓜⓝⓞⓟⓠⓡⓢⓣⓤⓥⓦⓧⓨⓩⒹⓇⒺⓈⓈⓊⓅ"
+            )
         ),
         "negative_circled": dict(
             zip("abcdefghijklmnopqrstuvwxyz", "🅐🅑🅒🅓🅔🅕🅖🅗🅘🅙🅚🅛🅜🅝🅞🅟🅠🅡🅢🅣🅤🅥🅦🅧🅨🅩")
