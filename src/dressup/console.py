@@ -1,4 +1,6 @@
 """Command-line interface."""
+from typing import Generator, Tuple
+
 import typer
 
 from . import __version__
@@ -22,6 +24,25 @@ def version_callback(value: bool) -> None:
     pass
 
 
+# TODO: Add live previews here!
+def complete_type(incomplete: str) -> Generator[Tuple[str, str], None, None]:
+    """Autocomplete options for --type option.
+
+    Args:
+        incomplete (str): The incomplete argument.
+
+    Yields:
+        (Generator): Arguments that match ``incomplete`` along
+            with a preview of the conversion.
+    """
+    incomplete = converter.normalize_text(incomplete)
+    converted_incomplete = converter.show_all("DRESS UP")
+    for unicode_type, convered_characters in converted_incomplete.items():
+        unicode_type = converter.normalize_text(unicode_type)
+        if unicode_type.startswith(incomplete):
+            yield (unicode_type.replace("_", "-"), convered_characters)
+
+
 # TODO: Add a command that lists all types
 # TODO: Add autocompletion for options:
 # https://typer.tiangolo.com/tutorial/options/autocompletion/
@@ -29,7 +50,11 @@ def version_callback(value: bool) -> None:
 def main(
     characters: str = typer.Argument(None),
     unicode_type: str = typer.Option(
-        None, "--type", "-t", help="The Unicode type to convert to."
+        None,
+        "--type",
+        "-t",
+        help="The Unicode type to convert to.",
+        autocompletion=complete_type,
     ),
     version: bool = typer.Option(
         None,

@@ -76,6 +76,13 @@ def test_help_parameter_descriptions(runner: CliRunner) -> None:
     assert parameter_help.startswith(expected_message)
 
 
+def test_complete_type(mock_toml_loads: Mock) -> None:
+    """It generates an autompletion list."""
+    completion_list = console.complete_type("cir")
+    for completion in completion_list:
+        assert ("circled", "ⒹⓇⒺⓈⓈ ⓊⓅ") == completion
+
+
 def test_cli_conversion_succeeds(runner: CliRunner, mock_toml_loads: Mock) -> None:
     """It exits with a code of zero when an argument is provided."""
     result = runner.invoke(console.app, ["hello"])
