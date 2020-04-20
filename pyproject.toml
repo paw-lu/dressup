@@ -43,7 +43,7 @@ sphinx-autodoc-typehints = "^1.10.3"
 recommonmark = "^0.6.0"
 pep8-naming = "^0.10.0"
 flake8-rst-docstrings = "^0.0.13"
-pytest-mock = "^3.0.0"
+pytest-mock = "^3.1.0"
 rope = "^0.16.0"
 
 [tool.poetry.scripts]
