@@ -77,7 +77,7 @@ def test_help_parameter_descriptions(runner: CliRunner) -> None:
 
 
 def test_complete_type(mock_toml_loads: Mock) -> None:
-    """It generates an autompletion list."""
+    """It generates an autocompletion list."""
     completion_list = console.complete_type("cir")
     for completion in completion_list:
         assert ("circled", "ⒹⓇⒺⓈⓈ ⓊⓅ") == completion
