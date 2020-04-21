@@ -71,7 +71,10 @@ def main(
     """
     if characters is None:
         typer.echo("No characters provided to convert.")
-        pass
+        if unicode_type is not None:
+            raise typer.Exit(code=1)
+        else:
+            raise typer.Exit(code=0)
     elif unicode_type is None:
         converted_characters = converter.show_all(characters)
         for character_type, converted_character in converted_characters.items():

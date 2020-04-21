@@ -23,9 +23,23 @@ def test_main_succeeds(runner: CliRunner) -> None:
     assert exit_code == 0
 
 
+def test_main_fails(runner: CliRunner) -> None:
+    """It exits with code 1 if option but no argument provided."""
+    result = runner.invoke(console.app, ["--type", "circle"])
+    exit_code = result.exit_code
+    assert exit_code == 1
+
+
 def test_no_argument_message(runner: CliRunner) -> None:
     """It prints a message when no argument is provided."""
     result = runner.invoke(console.app)
+    message = result.stdout
+    assert "No characters provided to convert.\n" == message
+
+
+def test_option_no_argument_message(runner: CliRunner) -> None:
+    """It prints a message when option but no argument is provided."""
+    result = runner.invoke(console.app, ["--type", "circle"])
     message = result.stdout
     assert "No characters provided to convert.\n" == message
 
