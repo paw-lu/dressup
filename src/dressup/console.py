@@ -3,8 +3,7 @@ from typing import Generator, Tuple
 
 import typer
 
-from . import __version__
-from . import converter
+from . import __version__, converter, exceptions
 
 app = typer.Typer()
 
@@ -84,6 +83,15 @@ def main(
             typer.secho(f"\n{converted_character}")
         pass
     else:
-        converted_characters = converter.convert(characters, unicode_type=unicode_type)
+        try:
+            converted_characters = converter.convert(
+                characters, unicode_type=unicode_type
+            )
+        except exceptions.InvalidUnicodeTypeError as error:
+            exception_message = str(error).replace("_", "-")
+            typer.secho(
+                exception_message, fg=typer.colors.BRIGHT_RED,
+            )
+            raise typer.Exit(code=1)
         typer.echo(converted_characters)
         pass

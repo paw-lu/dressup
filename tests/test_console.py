@@ -141,3 +141,21 @@ def test_cli_option(
     result = runner.invoke(console.app, [characters, "--type", unicode_type])
     actual_output = result.stdout
     assert actual_output == expected_output
+
+
+def test_invalid_unicode_type_fails(runner: CliRunner, mock_toml_loads: Mock) -> None:
+    """It exits with code 1 with invalid unicode_type."""
+    result = runner.invoke(console.app, ["characters", "--type", "invalid_type"])
+    exit_code = result.exit_code
+    assert exit_code == 1
+
+
+def test_invalid_unicode_type_message(runner: CliRunner, mock_toml_loads: Mock) -> None:
+    """It returns a message with an invalid unicode_type."""
+    result = runner.invoke(console.app, ["characters", "--type", "invalid_type"])
+    message = result.stdout
+    expected_message = (
+        "'invalid-type' is not a valid Unicode type."
+        " Valid types are circled, negative-circled.\n"
+    )
+    assert message == expected_message
