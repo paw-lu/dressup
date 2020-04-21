@@ -4,6 +4,7 @@
 /.nox/
 /.python-version
 /.pytype/
+/htmlcov/
 /dist/
 /docs/_build/
 /src/*.egg-info/
