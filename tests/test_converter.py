@@ -143,7 +143,7 @@ def test_invalid_unicode_type_info(mock_toml_loads: Mock) -> None:
         converter.convert("hello", unicode_type="non-existant type")
     exception_message = str(execinfo.value)
     expected_exception_message = (
-        "non_existant_type is not a valid Unicode type."
+        "'non_existant_type' is not a valid Unicode type."
         " Valid types are circled, negative_circled."
     )
     assert exception_message == expected_exception_message

@@ -93,7 +93,7 @@ def convert(characters: str, unicode_type: str) -> str:
     except KeyError:
         valid_types = ", ".join(translator.keys())
         raise exceptions.InvalidUnicodeTypeError(
-            f"{unicode_type} is not a valid Unicode type."
+            f"'{unicode_type}' is not a valid Unicode type."
             f" Valid types are {valid_types}."
         )
     converted_character = "".join(
