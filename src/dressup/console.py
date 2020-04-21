@@ -71,6 +71,8 @@ def main(
     """
     if characters is None:
         typer.echo("No characters provided to convert.")
+        # TODO As I add more options in make sure to check for their
+        # invocation here and add accompanying test
         if unicode_type is not None:
             raise typer.Exit(code=1)
         else:
