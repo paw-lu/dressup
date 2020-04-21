@@ -80,6 +80,9 @@ def read_file(file_path: Path) -> Dict[str, Dict[str, str]]:
     """
     translator = {}
     with open(file_path) as file:
+        # ``readlines()`` is used here because of a bug with pytest-mock
+        # and Python 3.6
+        # https://github.com/pytest-dev/pytest-mock/issues/185
         for i, line in enumerate(file.readlines()):
             if i == 0:
                 original_text = line.strip()
