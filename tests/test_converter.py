@@ -3,7 +3,7 @@ from unittest.mock import Mock
 
 import pytest
 
-from dressup import converter
+from dressup import converter, exceptions
 
 
 def test_read_translator(mock_toml_loads: Mock) -> None:
@@ -129,3 +129,21 @@ def test_convert(
         characters=characters, unicode_type=unicode_type
     )
     assert converted_character == expected_output
+
+
+def test_invalid_unicode_type_exception(mock_toml_loads: Mock) -> None:
+    """It raises an InvalidUnicodeTypeError exception."""
+    with pytest.raises(exceptions.InvalidUnicodeTypeError):
+        converter.convert("hello", unicode_type="non-existant type")
+
+
+def test_invalid_unicode_type_info(mock_toml_loads: Mock) -> None:
+    """It lists accepted values upon raising exception."""
+    with pytest.raises(exceptions.InvalidUnicodeTypeError) as execinfo:
+        converter.convert("hello", unicode_type="non-existant type")
+    exception_message = str(execinfo.value)
+    expected_exception_message = (
+        "non_existant_type is not a valid Unicode type."
+        " Valid types are circled, negative_circled."
+    )
+    assert exception_message == expected_exception_message

@@ -5,6 +5,8 @@ from typing import Any, Dict, MutableMapping
 
 import toml
 
+from . import exceptions
+
 
 def _read_translator() -> MutableMapping[str, Any]:
     """Read translator from config file.
@@ -79,10 +81,22 @@ def convert(characters: str, unicode_type: str) -> str:
 
     Returns:
         str: The converted Unicode characters.
+
+    Raises:
+        InvalidUnicodeTypeError: Raised if value inputted in
+            ``unicode_type`` is invalid.
     """
     unicode_type = normalize_text(unicode_type)
-    translator = _read_translator()[unicode_type]
+    translator = _read_translator()
+    try:
+        type_mapping = _read_translator()[unicode_type]
+    except KeyError:
+        valid_types = ", ".join(translator.keys())
+        raise exceptions.InvalidUnicodeTypeError(
+            f"{unicode_type} is not a valid Unicode type."
+            f" Valid types are {valid_types}."
+        )
     converted_character = "".join(
-        translator.get(character, character) for character in characters
+        type_mapping.get(character, character) for character in characters
     )
     return converted_character
