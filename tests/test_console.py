@@ -124,6 +124,6 @@ def test_cli_option(
     expected_output: str,
 ) -> None:
     """It converts the characters to the specified type."""
-    result = runner.invoke(console.app, [characters, f"--type={unicode_type}"])
+    result = runner.invoke(console.app, [characters, "--type", unicode_type])
     actual_output = result.stdout
     assert actual_output == expected_output
