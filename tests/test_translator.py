@@ -1,7 +1,35 @@
 """Test cases for translator script."""
+import pathlib
+import textwrap
+from unittest.mock import Mock
+
 import pytest
+from pytest_mock import MockFixture
 
 import translator
+
+
+@pytest.fixture
+def mock_open_file(mocker: MockFixture) -> Mock:
+    """Fixture for open file."""
+    mock_file_text = """\
+        qwer
+        mock_unicode asef
+        mock_numbers 1234
+    """
+    mock_file_text = textwrap.dedent(mock_file_text)
+    mock = mocker.patch("builtins.open", mocker.mock_open(read_data=mock_file_text))
+    return mock
+
+
+def test_read_file(mock_open_file: Mock) -> None:
+    """It converts a text file into character mappings."""
+    character_mapping = translator.read_file(pathlib.Path("translator.txt"))
+    expected_character_mapping = {
+        "mock_numbers": {"e": "3", "q": "1", "r": "4", "w": "2"},
+        "mock_unicode": {"q": "a", "r": "f", "w": "s"},
+    }
+    assert expected_character_mapping == character_mapping
 
 
 def test_remove_common_characters() -> None:
