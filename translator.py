@@ -80,7 +80,7 @@ def read_file(file_path: Path) -> Dict[str, Dict[str, str]]:
     """
     translator = {}
     with open(file_path) as file:
-        for i, line in enumerate(file):
+        for i, line in enumerate(file.readlines()):
             if i == 0:
                 original_text = line.strip()
             else:
