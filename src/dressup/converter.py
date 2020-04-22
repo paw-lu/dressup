@@ -89,7 +89,7 @@ def convert(characters: str, unicode_type: str) -> str:
     unicode_type = normalize_text(unicode_type)
     translator = _read_translator()
     try:
-        type_mapping = _read_translator()[unicode_type]
+        type_mapping = translator[unicode_type]
     except KeyError:
         valid_types = ", ".join(translator.keys())
         raise exceptions.InvalidUnicodeTypeError(
