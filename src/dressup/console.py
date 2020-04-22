@@ -2,6 +2,7 @@
 from typing import Generator, Tuple
 
 import typer
+from typer import Context
 
 from . import __version__, converter, exceptions
 
@@ -23,23 +24,30 @@ def version_callback(value: bool) -> None:
     pass
 
 
-# TODO: Add live previews here!
-def complete_type(incomplete: str) -> Generator[Tuple[str, str], None, None]:
+def complete_type(
+    ctx: Context, incomplete: str
+) -> Generator[Tuple[str, str], None, None]:
     """Autocomplete options for --type option.
 
     Args:
+        ctx (Context): Current command line arguments.
         incomplete (str): The incomplete argument.
 
     Yields:
         (Generator): Arguments that match ``incomplete`` along
             with a preview of the conversion.
     """
+    # TODO: Respect options in preview as you add them in cli
+    if ctx.args:
+        sample_text = ctx.args[0]
+    else:
+        sample_text = "Dress Up!"
     incomplete = converter.normalize_text(incomplete)
-    converted_incomplete = converter.show_all("DRESS UP")
-    for unicode_type, convered_characters in converted_incomplete.items():
+    converted_incomplete = converter.show_all(sample_text)
+    for unicode_type, converted_characters in converted_incomplete.items():
         unicode_type = converter.normalize_text(unicode_type)
         if unicode_type.startswith(incomplete):
-            yield (unicode_type.replace("_", "-"), convered_characters)
+            yield (unicode_type.replace("_", "-"), converted_characters)
 
 
 # TODO: Add a command that lists all types

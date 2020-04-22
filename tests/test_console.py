@@ -3,6 +3,8 @@ import textwrap
 from unittest.mock import Mock
 
 import pytest
+from pytest_mock import MockFixture
+import typer
 import typer.testing
 from typer.testing import CliRunner
 
@@ -14,6 +16,22 @@ from dressup import console
 def runner() -> CliRunner:
     """Fixture for invoking command-line interfaces."""
     return typer.testing.CliRunner()
+
+
+@pytest.fixture
+def mock_typer_context_no_argument(mocker: MockFixture) -> Mock:
+    """Fixture for mocking typer.Context without arguments."""
+    mock = mocker.patch("typer.Context")
+    mock.args = []
+    return mock
+
+
+@pytest.fixture
+def mock_typer_context_with_argument(mocker: MockFixture) -> Mock:
+    """Fixture for mocking typer.Context with arguments."""
+    mock = mocker.patch("typer.Context")
+    mock.args = ["SAmPlE"]
+    return mock
 
 
 def test_main_succeeds(runner: CliRunner) -> None:
@@ -90,11 +108,22 @@ def test_help_parameter_descriptions(runner: CliRunner) -> None:
     assert parameter_help.startswith(expected_message)
 
 
-def test_complete_type(mock_toml_loads: Mock) -> None:
+def test_complete_type(
+    mock_typer_context_no_argument: Mock, mock_toml_loads: Mock
+) -> None:
     """It generates an autocompletion list."""
-    completion_list = console.complete_type("cir")
+    completion_list = console.complete_type(typer.Context, "cir")
     for completion in completion_list:
-        assert ("circled", "ⒹⓇⒺⓈⓈ ⓊⓅ") == completion
+        assert ("circled", "Ⓓⓡⓔⓢⓢ Ⓤⓟ!") == completion
+
+
+def test_arg_complete_type(
+    mock_typer_context_with_argument: Mock, mock_toml_loads: Mock
+) -> None:
+    """It generates an autocompletion list using argument."""
+    completion_list = console.complete_type(typer.Context, "cir")
+    for completion in completion_list:
+        assert ("circled", "ⓈAⓜⓅⓛⒺ") == completion
 
 
 def test_cli_conversion_succeeds(runner: CliRunner, mock_toml_loads: Mock) -> None:
