@@ -131,6 +131,7 @@ def convert(
         Convert the string "Hello" to negative circle characters, but
         don't convert lowercase to uppercase if a perfect  match isn't
         found.
+
         >>> import dressup
         >>> dressup.convert(
         ...     "Hello",
@@ -140,6 +141,7 @@ def convert(
         '🅗ello'
 
         Concvert the string "Hello" to reversed characters, but
+
         >>> import dressup
         >>> import dressup
         >>> dressup.convert(
