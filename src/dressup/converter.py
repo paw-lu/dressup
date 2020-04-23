@@ -105,7 +105,7 @@ def convert(
             mapping is not found. By default False.
         reverse (bool): Whether to reverse the returned characters. This
             can be useful when converting to ``unicode_type``
-            "inverted" or "reverse".
+            "inverted" or "reverse". By default False.
 
     Returns:
         str: The converted Unicode characters.
