@@ -180,6 +180,33 @@ def test_strict_case_convert(
     assert converted_character == expected_output
 
 
+@pytest.mark.parametrize(
+    "characters, unicode_type, expected_output, strict_case, reverse",
+    [
+        ("hello", "Circled", "ⓞⓛⓛⓔⓗ", False, True),
+        ("hello", "Negative circled", "🅞🅛🅛🅔🅗", False, True),
+        ("he(lo", "Circled", "ⓞⓛ(ⓔⓗ", False, True),
+        ("💦a", "Circled", "ⓐ💦", False, True),
+    ],
+)
+def test_reverse_convert(
+    mock_toml_loads: Mock,
+    characters: str,
+    unicode_type: str,
+    expected_output: str,
+    strict_case: bool,
+    reverse: bool,
+) -> None:
+    """It converts and reverses characters to the specified type."""
+    converted_character = converter.convert(
+        characters=characters,
+        unicode_type=unicode_type,
+        strict_case=strict_case,
+        reverse=reverse,
+    )
+    assert converted_character == expected_output
+
+
 def test_invalid_unicode_type_exception(mock_toml_loads: Mock) -> None:
     """It raises an InvalidUnicodeTypeError exception."""
     with pytest.raises(exceptions.InvalidUnicodeTypeError):

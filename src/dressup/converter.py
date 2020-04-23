@@ -91,7 +91,9 @@ def normalize_text(text_input: str) -> str:
     return re.sub(r"\s+", "_", text_input.strip().lower().replace("-", "_"))
 
 
-def convert(characters: str, unicode_type: str, strict_case: bool = False) -> str:
+def convert(
+    characters: str, unicode_type: str, strict_case: bool = False, reverse: bool = False
+) -> str:
     """Convert characters to a Unicode character type.
 
     Args:
@@ -101,6 +103,9 @@ def convert(characters: str, unicode_type: str, strict_case: bool = False) -> st
         strict_case (bool): Whether to forbid a character from being
             converted to its lower or upper case counterpart if an exact
             mapping is not found. By default False.
+        reverse (bool): Whether to reverse the returned characters. This
+            can be useful when converting to ``unicode_type``
+            "inverted" or "reverse".
 
     Returns:
         str: The converted Unicode characters.
@@ -111,6 +116,10 @@ def convert(characters: str, unicode_type: str, strict_case: bool = False) -> st
     """
     unicode_type = normalize_text(unicode_type)
     translator = _read_translator()
+    if reverse:
+        step = -1
+    else:
+        step = 1
     try:
         type_mapping = translator[unicode_type]
     except KeyError:
@@ -122,7 +131,7 @@ def convert(characters: str, unicode_type: str, strict_case: bool = False) -> st
     if strict_case:
         converted_character = "".join(
             type_mapping.get(character, character) for character in characters
-        )
+        )[::step]
     else:
         converted_character = "".join(
             type_mapping.get(
@@ -132,5 +141,5 @@ def convert(characters: str, unicode_type: str, strict_case: bool = False) -> st
                 ),
             )
             for character in characters
-        )
+        )[::step]
     return converted_character
