@@ -123,7 +123,15 @@ def convert(
     Args:
         characters (str): The characters to convert.
         unicode_type (str): The type of Unicode character types to
-            convert to.
+            convert to. Valid values are "circle", "negative circle",
+            "monospace", "math bold", "math bold fraktur",
+            "math bold italic", "math bold script",
+            "math double struck", "math monospace",
+            "math sans", "math sans bold", "math sans bold italic",
+            "math sans italic", "parenthesized", "square",
+            "negative square", "cute", "math fraktur", "rock dots",
+            "small caps", "stroked", "subscript", "superscript",
+            "inverted", and "reversed".
         strict_case (bool): Whether to forbid a character from being
             converted to its lower or upper case counterpart if an exact
             mapping is not found. By default False.
