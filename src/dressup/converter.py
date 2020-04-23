@@ -120,6 +120,34 @@ def convert(
     Raises:
         InvalidUnicodeTypeError: Raised if value inputted in
             ``unicode_type`` is invalid.
+
+    Examples:
+        Convert the string "Hello" to negative circle characters.
+
+        >>> import dressup
+        >>> dressup.convert("Hello", unicode_type="negative circle")
+        '🅗🅔🅛🅛🅞'
+
+        Convert the string "Hello" to negative circle characters, but
+        don't convert lowercase to uppercase if a perfect  match isn't
+        found.
+        >>> import dressup
+        >>> dressup.convert(
+        ...     "Hello",
+        ...     unicode_type="negative circle",
+        ...     strict_case=True,
+        ... )
+        '🅗ello'
+
+        Concvert the string "Hello" to reversed characters, but
+        >>> import dressup
+        >>> import dressup
+        >>> dressup.convert(
+        ...     "Hello",
+        ...     unicode_type="reversed",
+        ...     reverse=True,
+        ... )
+        'o⅃⅃ɘH'
     """
     unicode_type = normalize_text(unicode_type)
     translator = _read_translator()

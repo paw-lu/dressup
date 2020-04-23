@@ -11,7 +11,7 @@ from nox.sessions import Session
 
 package = "dressup"
 python_versions = ["3.8", "3.7", "3.6"]
-nox.options.sessions = "lint", "safety", "mypy", "pytype", "tests"
+nox.options.sessions = "lint", "safety", "mypy", "pytype", "tests", "xdoctest"
 locations = "src", "tests", "noxfile.py", "docs/conf.py", "translator.py"
 
 
