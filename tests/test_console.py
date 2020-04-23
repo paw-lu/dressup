@@ -123,7 +123,7 @@ def test_arg_complete_type(
     """It generates an autocompletion list using argument."""
     completion_list = console.complete_type(typer.Context, "cir")
     for completion in completion_list:
-        assert ("circled", "ⓈAⓜⓅⓛⒺ") == completion
+        assert ("circled", "ⓈⓐⓜⓅⓛⒺ") == completion
 
 
 def test_cli_conversion_succeeds(runner: CliRunner, mock_toml_loads: Mock) -> None:
