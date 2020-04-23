@@ -117,9 +117,7 @@ def convert(
     unicode_type = normalize_text(unicode_type)
     translator = _read_translator()
     if reverse:
-        step = -1
-    else:
-        step = 1
+        characters = characters[::-1]
     try:
         type_mapping = translator[unicode_type]
     except KeyError:
@@ -131,7 +129,7 @@ def convert(
     if strict_case:
         converted_character = "".join(
             type_mapping.get(character, character) for character in characters
-        )[::step]
+        )
     else:
         converted_character = "".join(
             type_mapping.get(
@@ -141,5 +139,5 @@ def convert(
                 ),
             )
             for character in characters
-        )[::step]
+        )
     return converted_character
