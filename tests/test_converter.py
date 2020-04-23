@@ -99,16 +99,22 @@ def test_normalize_text(name: str, expected_output: str) -> None:
 
 
 @pytest.mark.parametrize(
-    "characters, expected_output",
+    "characters, expected_output, strict_case",
     [
-        ("hello", {"Circled": "ⓗⓔⓛⓛⓞ", "Negative circled": "🅗🅔🅛🅛🅞"}),
-        ("he(lo", {"Circled": "ⓗⓔ(ⓛⓞ", "Negative circled": "🅗🅔(🅛🅞"}),
-        ("💦a", {"Circled": "💦ⓐ", "Negative circled": "💦🅐"}),
+        ("hello", {"Circled": "ⓗⓔⓛⓛⓞ", "Negative circled": "🅗🅔🅛🅛🅞"}, False),
+        ("he(lo", {"Circled": "ⓗⓔ(ⓛⓞ", "Negative circled": "🅗🅔(🅛🅞"}, False),
+        ("💦a", {"Circled": "💦ⓐ", "Negative circled": "💦🅐"}, False),
     ],
 )
-def test_show_all(mock_toml_loads: Mock, characters: str, expected_output: str) -> None:
+def test_show_all(
+    mock_toml_loads: Mock, characters: str, expected_output: str, strict_case: bool
+) -> None:
     """It converts characterse to all possible Unicode types."""
-    converted_characters = converter.show_all(characters=characters)
+    converted_characters = converter.show_all(
+        characters=characters, strict_case=strict_case
+    )
+    assert converted_characters == expected_output
+
     assert converted_characters == expected_output
 
 
