@@ -35,24 +35,44 @@ def _format_names(name: str) -> str:
     return name[0].upper() + name[1:].replace("_", " ")
 
 
-def show_all(characters: str) -> Dict[str, str]:
+def show_all(characters: str, strict_case: bool = False) -> Dict[str, str]:
     """Return all possible unicode conversions.
 
     Args:
         characters (str): The characters to convert.
+        strict_case (bool): Whether to forbid a character from being
+            converted to its lower or upper case counterpart if an exact
+            mapping is not found. By default False.
 
     Returns:
         Dict(str, str): A dictionary where the keys are unicode
             character types and the values are the converted.
     """
     translator = _read_translator()
-    converted_characters = {
-        _format_names(character_type): "".join(
-            translator[normalize_text(character_type)].get(character, character)
-            for character in characters
-        )
-        for character_type in translator
-    }
+    if strict_case:
+        converted_characters = {
+            _format_names(character_type): "".join(
+                translator[normalize_text(character_type)].get(character, character)
+                for character in characters
+            )
+            for character_type in translator
+        }
+    else:
+        converted_characters = {
+            _format_names(character_type): "".join(
+                translator[normalize_text(character_type)].get(
+                    character,
+                    translator[normalize_text(character_type)].get(
+                        character.upper(),
+                        translator[normalize_text(character_type)].get(
+                            character.lower(), character
+                        ),
+                    ),
+                )
+                for character in characters
+            )
+            for character_type in translator
+        }
     return converted_characters
 
 
@@ -71,13 +91,16 @@ def normalize_text(text_input: str) -> str:
     return re.sub(r"\s+", "_", text_input.strip().lower().replace("-", "_"))
 
 
-def convert(characters: str, unicode_type: str) -> str:
+def convert(characters: str, unicode_type: str, strict_case: bool = False) -> str:
     """Convert characters to a Unicode character type.
 
     Args:
         characters (str): The characters to convert.
         unicode_type (str): The type of Unicode character types to
             convert to.
+        strict_case (bool): Whether to forbid a character from being
+            converted to its lower or upper case counterpart if an exact
+            mapping is not found. By default False.
 
     Returns:
         str: The converted Unicode characters.
@@ -96,7 +119,18 @@ def convert(characters: str, unicode_type: str) -> str:
             f"'{unicode_type}' is not a valid Unicode type."
             f" Valid types are {valid_types}."
         )
-    converted_character = "".join(
-        type_mapping.get(character, character) for character in characters
-    )
+    if strict_case:
+        converted_character = "".join(
+            type_mapping.get(character, character) for character in characters
+        )
+    else:
+        converted_character = "".join(
+            type_mapping.get(
+                character,
+                type_mapping.get(
+                    character.upper(), type_mapping.get(character.lower(), character)
+                ),
+            )
+            for character in characters
+        )
     return converted_character
