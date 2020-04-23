@@ -147,7 +147,7 @@ def test_complete_type(
     """It generates an autocompletion list."""
     completion_list = console.complete_type(typer.Context, "cir")
     for completion in completion_list:
-        assert ("circled", "Ⓓⓡⓔⓢⓢ Ⓤⓟ!") == completion
+        assert completion == ("circled", "Ⓓⓡⓔⓢⓢ Ⓤⓟ!")
 
 
 def test_arg_complete_type(
@@ -156,7 +156,16 @@ def test_arg_complete_type(
     """It generates an autocompletion list using argument."""
     completion_list = console.complete_type(typer.Context, "cir")
     for completion in completion_list:
-        assert ("circled", "ⓈⓐⓜⓅⓛⒺ") == completion
+        assert completion == ("circled", "ⓈⓐⓜⓅⓛⒺ")
+
+
+def test_arg_strict_complete_type(
+    mock_typer_context_with_argument_strict: Mock, mock_toml_loads: Mock
+) -> None:
+    """It generates an autocompletion list using argument and strict."""
+    completion_list = console.complete_type(typer.Context, "cir")
+    for completion in completion_list:
+        assert completion == ("circled", "ⓈAⓜⓅⓛⒺ")
 
 
 def test_cli_conversion_succeeds(runner: CliRunner, mock_toml_loads: Mock) -> None:
