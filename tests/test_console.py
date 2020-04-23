@@ -192,6 +192,23 @@ def test_cli_conversion_output(runner: CliRunner, mock_toml_loads: Mock) -> None
     assert actual_output == expected_output
 
 
+def test_cli_conversion_output_strict(runner: CliRunner, mock_toml_loads: Mock) -> None:
+    """It strictly converts the characters."""
+    result = runner.invoke(console.app, ["hello", "--strict-case"])
+    actual_output = result.stdout
+    expected_output = """
+    Circled
+
+    ⓗⓔⓛⓛⓞ
+
+    Negative circled
+
+    hello
+    """
+    expected_output = textwrap.dedent(expected_output)
+    assert actual_output == expected_output
+
+
 @pytest.mark.parametrize(
     "characters, unicode_type, expected_output",
     [
