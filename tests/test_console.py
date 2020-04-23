@@ -46,6 +46,20 @@ def mock_typer_context_with_argument(mocker: MockFixture) -> Mock:
     return mock
 
 
+@pytest.fixture
+def mock_typer_context_with_argument_strict(mocker: MockFixture) -> Mock:
+    """Fixture for mocking typer.Context with args and strict-case."""
+    mock = mocker.patch("typer.Context")
+    mock.args = ["SAmPlE"]
+    mock.params = {
+        "version": None,
+        "characters": None,
+        "strict_case": True,
+        "unicode_type": None,
+    }
+    return mock
+
+
 def test_main_succeeds(runner: CliRunner) -> None:
     """It exits with a status code of 0."""
     result = runner.invoke(console.app)
