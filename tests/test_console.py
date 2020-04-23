@@ -68,16 +68,10 @@ def test_main_succeeds(runner: CliRunner) -> None:
     assert exit_code == 0
 
 
-def test_main_fails(runner: CliRunner) -> None:
-    """It exits with code 1 if type but no argument provided."""
-    result = runner.invoke(console.app, ["--type", "circle"])
-    exit_code = result.exit_code
-    assert exit_code == 1
-
-
-def test_strict_only_fails(runner: CliRunner, mock_toml_loads: Mock) -> None:
-    """It exits with code 1 if strict-case but no argument provided."""
-    result = runner.invoke(console.app, ["--strict-case"])
+@pytest.mark.parametrize("arguments", [["--type", "circle"], ["--strict-case"]])
+def test_main_fails(runner: CliRunner, arguments: List[str]) -> None:
+    """It exits with code 1 if option but no argument provided."""
+    result = runner.invoke(console.app, arguments)
     exit_code = result.exit_code
     assert exit_code == 1
 
