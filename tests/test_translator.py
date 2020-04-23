@@ -29,7 +29,7 @@ def test_read_file(mock_open_file: Mock) -> None:
         "mock_numbers": {"e": "3", "q": "1", "r": "4", "w": "2"},
         "mock_unicode": {"q": "a", "r": "f", "w": "s"},
     }
-    assert expected_character_mapping == character_mapping
+    assert character_mapping == expected_character_mapping
 
 
 def test_remove_common_characters() -> None:
