@@ -56,6 +56,9 @@ def complete_type(
 @app.command()
 def main(
     characters: str = typer.Argument(None),
+    strict_case: bool = typer.Option(
+        False, "--strict-case", "-s", help="Do not fallback to different cases.",
+    ),
     unicode_type: str = typer.Option(
         None,
         "--type",

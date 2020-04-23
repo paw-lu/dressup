@@ -101,9 +101,10 @@ def test_help_parameter_descriptions(runner: CliRunner) -> None:
     output = result.stdout
     parameter_help = output.split("\n\n")[3]
     expected_message = (
-        "Options:\n  -t, "
-        "--type TEXT                 The Unicode type to convert to.\n  "
-        "-v, --version                   Return the package version."
+        "Options:\n"
+        "  -s, --strict-case               Do not fallback to different cases.\n"
+        "  -t, --type TEXT                 The Unicode type to convert to.\n"
+        "  -v, --version                   Return the package version."
     )
     assert parameter_help.startswith(expected_message)
 
