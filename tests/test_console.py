@@ -29,6 +29,7 @@ def mock_typer_context_no_argument(mocker: MockFixture) -> Mock:
         "characters": None,
         "strict_case": None,
         "unicode_type": None,
+        "reverse": None,
     }
     return mock
 
@@ -43,6 +44,7 @@ def mock_typer_context_with_argument(mocker: MockFixture) -> Mock:
         "characters": None,
         "strict_case": None,
         "unicode_type": None,
+        "reverse": None,
     }
     return mock
 
@@ -57,6 +59,22 @@ def mock_typer_context_with_argument_strict(mocker: MockFixture) -> Mock:
         "characters": None,
         "strict_case": True,
         "unicode_type": None,
+        "reverse": None,
+    }
+    return mock
+
+
+@pytest.fixture
+def mock_typer_context_with_argument_reverse(mocker: MockFixture) -> Mock:
+    """Fixture for mocking typer.Context with args and strict-case."""
+    mock = mocker.patch("typer.Context")
+    mock.args = ["SAmPlE"]
+    mock.params = {
+        "version": None,
+        "characters": None,
+        "strict_case": None,
+        "unicode_type": None,
+        "reverse": True,
     }
     return mock
 
@@ -68,7 +86,9 @@ def test_main_succeeds(runner: CliRunner) -> None:
     assert exit_code == 0
 
 
-@pytest.mark.parametrize("arguments", [["--type", "circle"], ["--strict-case"]])
+@pytest.mark.parametrize(
+    "arguments", [["--type", "circle"], ["--strict-case"], ["--reverse"]]
+)
 def test_main_fails(runner: CliRunner, arguments: List[str]) -> None:
     """It exits with code 1 if option but no argument provided."""
     result = runner.invoke(console.app, arguments)
@@ -85,7 +105,12 @@ def test_no_argument_message(runner: CliRunner) -> None:
 
 @pytest.mark.parametrize(
     "arguments",
-    [["--type", "circle"], ["--strict-case"], ["--strict-case", "--type", "circle"]],
+    [
+        ["--type", "circle"],
+        ["--strict-case"],
+        ["--strict-case", "--type", "circle"],
+        ["--reverse"],
+    ],
 )
 def test_option_no_argument_message(runner: CliRunner, arguments: List[str]) -> None:
     """It prints a message when option but no argument is provided."""
@@ -135,6 +160,7 @@ def test_help_parameter_descriptions(runner: CliRunner) -> None:
     expected_message = (
         "Options:\n"
         "  -s, --strict-case               Do not fallback to different cases.\n"
+        "  -r, --reverse                   Reverse the output.\n"
         "  -t, --type TEXT                 The Unicode type to convert to.\n"
         "  -v, --version                   Return the package version."
     )
@@ -166,6 +192,15 @@ def test_arg_strict_complete_type(
     completion_list = console.complete_type(typer.Context, "cir")
     for completion in completion_list:
         assert completion == ("circled", "ⓈAⓜⓅⓛⒺ")
+
+
+def test_arg_reverse_complete_type(
+    mock_typer_context_with_argument_reverse: Mock, mock_toml_loads: Mock
+) -> None:
+    """It generates an autocompletion list using argument and reverse."""
+    completion_list = console.complete_type(typer.Context, "cir")
+    for completion in completion_list:
+        assert completion == ("circled", "ⒺⓛⓅⓜⓐⓈ")
 
 
 def test_cli_conversion_succeeds(runner: CliRunner, mock_toml_loads: Mock) -> None:
@@ -204,6 +239,25 @@ def test_cli_conversion_output_strict(runner: CliRunner, mock_toml_loads: Mock) 
     Negative circled
 
     hello
+    """
+    expected_output = textwrap.dedent(expected_output)
+    assert actual_output == expected_output
+
+
+def test_cli_conversion_output_reverse(
+    runner: CliRunner, mock_toml_loads: Mock
+) -> None:
+    """It converts reversed characters."""
+    result = runner.invoke(console.app, ["hello", "--reverse"])
+    actual_output = result.stdout
+    expected_output = """
+    Circled
+
+    ⓞⓛⓛⓔⓗ
+
+    Negative circled
+
+    🅞🅛🅛🅔🅗
     """
     expected_output = textwrap.dedent(expected_output)
     assert actual_output == expected_output
@@ -250,6 +304,30 @@ def test_cli_option_strict(
     """It converts the characters to the specified type."""
     result = runner.invoke(
         console.app, [characters, "--type", unicode_type, "--strict-case"]
+    )
+    actual_output = result.stdout
+    assert actual_output == expected_output
+
+
+@pytest.mark.parametrize(
+    "characters, unicode_type, expected_output",
+    [
+        ("hello", "Circled", "ⓞⓛⓛⓔⓗ\n"),
+        ("hello", "Negative circled", "🅞🅛🅛🅔🅗\n"),
+        ("he(lo", "Circled", "ⓞⓛ(ⓔⓗ\n"),
+        ("💦a", "Circled", "ⓐ💦\n"),
+    ],
+)
+def test_cli_option_reverse(
+    runner: CliRunner,
+    mock_toml_loads: Mock,
+    characters: str,
+    unicode_type: str,
+    expected_output: str,
+) -> None:
+    """It converts the characters to the specified type."""
+    result = runner.invoke(
+        console.app, [characters, "--type", unicode_type, "--reverse"]
     )
     actual_output = result.stdout
     assert actual_output == expected_output

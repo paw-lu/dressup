@@ -37,14 +37,15 @@ def complete_type(
         (Generator): Arguments that match ``incomplete`` along
             with a preview of the conversion.
     """
-    # TODO: Respect options in preview as you add them in cli
     if ctx.args:
         sample_text = ctx.args[0]
     else:
         sample_text = "Dress Up!"
     incomplete = converter.normalize_text(incomplete)
     converted_incomplete = converter.show_all(
-        sample_text, strict_case=ctx.params.get("strict_case", False)
+        sample_text,
+        strict_case=ctx.params.get("strict_case", False),
+        reverse=ctx.params.get("reverse", False),
     )
     for unicode_type, converted_characters in converted_incomplete.items():
         unicode_type = converter.normalize_text(unicode_type)
@@ -53,14 +54,13 @@ def complete_type(
 
 
 # TODO: Add a command that lists all types
-# TODO: Add autocompletion for options:
-# https://typer.tiangolo.com/tutorial/options/autocompletion/
 @app.command()
 def main(
     characters: str = typer.Argument(None),
     strict_case: bool = typer.Option(
         False, "--strict-case", "-s", help="Do not fallback to different cases.",
     ),
+    reverse: bool = typer.Option(False, "--reverse", "-r", help="Reverse the output."),
     unicode_type: str = typer.Option(
         None,
         "--type",
@@ -83,14 +83,14 @@ def main(
     """
     if characters is None:
         typer.echo("No characters provided to convert.")
-        # TODO As I add more options in make sure to check for their
-        # invocation here and add accompanying test
-        if unicode_type is not None or strict_case is True:
+        if unicode_type is not None or strict_case or reverse:
             raise typer.Exit(code=1)
         else:
             raise typer.Exit(code=0)
     elif unicode_type is None:
-        converted_characters = converter.show_all(characters, strict_case=strict_case)
+        converted_characters = converter.show_all(
+            characters, strict_case=strict_case, reverse=reverse
+        )
         for character_type, converted_character in converted_characters.items():
             typer.secho(f"\n{character_type}", fg=typer.colors.MAGENTA, bold=True)
             typer.secho(f"\n{converted_character}")
@@ -98,7 +98,10 @@ def main(
     else:
         try:
             converted_characters = converter.convert(
-                characters, unicode_type=unicode_type, strict_case=strict_case
+                characters,
+                unicode_type=unicode_type,
+                strict_case=strict_case,
+                reverse=reverse,
             )
         except exceptions.InvalidUnicodeTypeError as error:
             exception_message = str(error).replace("_", "-")
