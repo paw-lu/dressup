@@ -95,7 +95,7 @@ def test_no_argument_message(runner: CliRunner) -> None:
 )
 def test_option_no_argument_message(runner: CliRunner, arguments: List[str]) -> None:
     """It prints a message when option but no argument is provided."""
-    result = runner.invoke(console.app, ["--type", "circle"])
+    result = runner.invoke(console.app, arguments)
     message = result.stdout
     assert "No characters provided to convert.\n" == message
 
