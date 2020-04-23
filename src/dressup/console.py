@@ -43,7 +43,9 @@ def complete_type(
     else:
         sample_text = "Dress Up!"
     incomplete = converter.normalize_text(incomplete)
-    converted_incomplete = converter.show_all(sample_text)
+    converted_incomplete = converter.show_all(
+        sample_text, strict_case=ctx.params.get("strict_case", False)
+    )
     for unicode_type, converted_characters in converted_incomplete.items():
         unicode_type = converter.normalize_text(unicode_type)
         if unicode_type.startswith(incomplete):
@@ -83,12 +85,12 @@ def main(
         typer.echo("No characters provided to convert.")
         # TODO As I add more options in make sure to check for their
         # invocation here and add accompanying test
-        if unicode_type is not None:
+        if unicode_type is not None or strict_case is True:
             raise typer.Exit(code=1)
         else:
             raise typer.Exit(code=0)
     elif unicode_type is None:
-        converted_characters = converter.show_all(characters)
+        converted_characters = converter.show_all(characters, strict_case=strict_case)
         for character_type, converted_character in converted_characters.items():
             typer.secho(f"\n{character_type}", fg=typer.colors.MAGENTA, bold=True)
             typer.secho(f"\n{converted_character}")
@@ -96,7 +98,7 @@ def main(
     else:
         try:
             converted_characters = converter.convert(
-                characters, unicode_type=unicode_type
+                characters, unicode_type=unicode_type, strict_case=strict_case
             )
         except exceptions.InvalidUnicodeTypeError as error:
             exception_message = str(error).replace("_", "-")
