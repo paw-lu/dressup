@@ -151,7 +151,7 @@ def test_strict_case_convert(
     expected_output: str,
     strict_case: bool,
 ) -> None:
-    """It converts characters to the specified Unicode type."""
+    """It strictly converts characters to the specified Unicode type."""
     converted_character = converter.convert(
         characters=characters, unicode_type=unicode_type, strict_case=strict_case
     )
