@@ -231,6 +231,30 @@ def test_cli_option(
     assert actual_output == expected_output
 
 
+@pytest.mark.parametrize(
+    "characters, unicode_type, expected_output",
+    [
+        ("hello", "Circled", "ⓗⓔⓛⓛⓞ\n"),
+        ("hello", "Negative circled", "hello\n"),
+        ("he(lo", "Circled", "ⓗⓔ(ⓛⓞ\n"),
+        ("💦a", "Circled", "💦ⓐ\n"),
+    ],
+)
+def test_cli_option_strict(
+    runner: CliRunner,
+    mock_toml_loads: Mock,
+    characters: str,
+    unicode_type: str,
+    expected_output: str,
+) -> None:
+    """It converts the characters to the specified type."""
+    result = runner.invoke(
+        console.app, [characters, "--type", unicode_type, "--strict-case"]
+    )
+    actual_output = result.stdout
+    assert actual_output == expected_output
+
+
 def test_invalid_unicode_type_fails(runner: CliRunner, mock_toml_loads: Mock) -> None:
     """It exits with code 1 with invalid unicode_type."""
     result = runner.invoke(console.app, ["characters", "--type", "invalid_type"])
