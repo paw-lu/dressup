@@ -1,5 +1,6 @@
 """Test cases for the console module."""
 import textwrap
+from typing import List
 from unittest.mock import Mock
 
 import pytest
@@ -88,7 +89,11 @@ def test_no_argument_message(runner: CliRunner) -> None:
     assert "No characters provided to convert.\n" == message
 
 
-def test_option_no_argument_message(runner: CliRunner) -> None:
+@pytest.mark.parametrize(
+    "arguments",
+    [["--type", "circle"], ["--strict-case"], ["--strict-case", "--type", "circle"]],
+)
+def test_option_no_argument_message(runner: CliRunner, arguments: List[str]) -> None:
     """It prints a message when option but no argument is provided."""
     result = runner.invoke(console.app, ["--type", "circle"])
     message = result.stdout
