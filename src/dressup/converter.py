@@ -67,8 +67,8 @@ def show_all(
         '𝘏𝘦𝘭𝘭𝘰', 'Parenthesized': '⒣⒠⒧⒧⒪', 'Square': '🄷🄴🄻🄻🄾',
         'Negative square': '🅷🅴🅻🅻🅾', 'Cute': 'Héĺĺő', 'Math fraktur':
         'ℌ𝔢𝔩𝔩𝔬', 'Rock dots': 'Ḧëḷḷö', 'Small caps': 'ʜᴇʟʟᴏ', 'Stroked':
-        'Ħɇłłø', 'Subscript': 'ₕₑₗₗₒ', 'Superscript': 'ᴴᵉˡˡᵒ', 'Inverted':
-        'ɥǝןןo', 'Reversed': 'Hɘ⅃⅃o'}
+        'Ħɇłłø', 'Subscript': 'ₕₑₗₗₒ', 'Superscript': 'ᴴᵉˡˡᵒ',
+        'Inverted': 'ɥǝןןo', 'Reversed': 'Hɘ⅃⅃o'}
     """
     translator = _read_translator()
     if reverse:
