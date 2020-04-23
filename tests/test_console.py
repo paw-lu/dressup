@@ -54,7 +54,7 @@ def test_main_succeeds(runner: CliRunner) -> None:
 
 
 def test_main_fails(runner: CliRunner) -> None:
-    """It exits with code 1 if option but no argument provided."""
+    """It exits with code 1 if type but no argument provided."""
     result = runner.invoke(console.app, ["--type", "circle"])
     exit_code = result.exit_code
     assert exit_code == 1
