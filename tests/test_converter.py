@@ -99,37 +99,67 @@ def test_normalize_text(name: str, expected_output: str) -> None:
 
 
 @pytest.mark.parametrize(
-    "characters, expected_output, strict_case",
+    "characters, expected_output, strict_case, reverse",
     [
-        ("hello", {"Circled": "ⓗⓔⓛⓛⓞ", "Negative circled": "🅗🅔🅛🅛🅞"}, False),
-        ("he(lo", {"Circled": "ⓗⓔ(ⓛⓞ", "Negative circled": "🅗🅔(🅛🅞"}, False),
-        ("💦a", {"Circled": "💦ⓐ", "Negative circled": "💦🅐"}, False),
+        ("hello", {"Circled": "ⓗⓔⓛⓛⓞ", "Negative circled": "🅗🅔🅛🅛🅞"}, False, False),
+        ("he(lo", {"Circled": "ⓗⓔ(ⓛⓞ", "Negative circled": "🅗🅔(🅛🅞"}, False, False),
+        ("💦a", {"Circled": "💦ⓐ", "Negative circled": "💦🅐"}, False, False),
     ],
 )
 def test_show_all(
-    mock_toml_loads: Mock, characters: str, expected_output: str, strict_case: bool
+    mock_toml_loads: Mock,
+    characters: str,
+    expected_output: str,
+    strict_case: bool,
+    reverse: bool,
 ) -> None:
     """It converts characterse to all possible Unicode types."""
     converted_characters = converter.show_all(
-        characters=characters, strict_case=strict_case
+        characters=characters, strict_case=strict_case, reverse=reverse
     )
     assert converted_characters == expected_output
 
 
 @pytest.mark.parametrize(
-    "characters, expected_output, strict_case",
+    "characters, expected_output, strict_case, reverse",
     [
-        ("hello", {"Circled": "ⓗⓔⓛⓛⓞ", "Negative circled": "hello"}, True),
-        ("he(lo", {"Circled": "ⓗⓔ(ⓛⓞ", "Negative circled": "he(lo"}, True),
-        ("💦a", {"Circled": "💦ⓐ", "Negative circled": "💦a"}, True),
+        ("hello", {"Circled": "ⓗⓔⓛⓛⓞ", "Negative circled": "hello"}, True, False),
+        ("he(lo", {"Circled": "ⓗⓔ(ⓛⓞ", "Negative circled": "he(lo"}, True, False),
+        ("💦a", {"Circled": "💦ⓐ", "Negative circled": "💦a"}, True, False),
     ],
 )
 def test_strict_case_show_all(
-    mock_toml_loads: Mock, characters: str, expected_output: str, strict_case: bool
+    mock_toml_loads: Mock,
+    characters: str,
+    expected_output: str,
+    strict_case: bool,
+    reverse: bool,
 ) -> None:
     """It strictly converts characterse to all Unicode types."""
     converted_characters = converter.show_all(
-        characters=characters, strict_case=strict_case
+        characters=characters, strict_case=strict_case, reverse=reverse
+    )
+    assert converted_characters == expected_output
+
+
+@pytest.mark.parametrize(
+    "characters, expected_output, strict_case, reverse",
+    [
+        ("hello", {"Circled": "ⓞⓛⓛⓔⓗ", "Negative circled": "🅞🅛🅛🅔🅗"}, False, True),
+        ("he(lo", {"Circled": "ⓞⓛ(ⓔⓗ", "Negative circled": "🅞🅛(🅔🅗"}, False, True),
+        ("💦a", {"Circled": "ⓐ💦", "Negative circled": "🅐💦"}, False, True),
+    ],
+)
+def test_reverse_show_all(
+    mock_toml_loads: Mock,
+    characters: str,
+    expected_output: str,
+    strict_case: bool,
+    reverse: bool,
+) -> None:
+    """It converts reversed characterse to all Unicode types."""
+    converted_characters = converter.show_all(
+        characters=characters, strict_case=strict_case, reverse=reverse
     )
     assert converted_characters == expected_output
 

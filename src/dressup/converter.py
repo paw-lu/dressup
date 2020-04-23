@@ -35,7 +35,9 @@ def _format_names(name: str) -> str:
     return name[0].upper() + name[1:].replace("_", " ")
 
 
-def show_all(characters: str, strict_case: bool = False) -> Dict[str, str]:
+def show_all(
+    characters: str, strict_case: bool = False, reverse: bool = False
+) -> Dict[str, str]:
     """Return all possible unicode conversions.
 
     Args:
@@ -43,12 +45,17 @@ def show_all(characters: str, strict_case: bool = False) -> Dict[str, str]:
         strict_case (bool): Whether to forbid a character from being
             converted to its lower or upper case counterpart if an exact
             mapping is not found. By default False.
+        reverse (bool): Whether to reverse the returned characters. This
+            can be useful when converting to ``unicode_type``
+            "inverted" or "reverse". By default False.
 
     Returns:
         Dict(str, str): A dictionary where the keys are unicode
             character types and the values are the converted.
     """
     translator = _read_translator()
+    if reverse:
+        characters = characters[::-1]
     if strict_case:
         converted_characters = {
             _format_names(character_type): "".join(
