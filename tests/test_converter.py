@@ -135,12 +135,12 @@ def test_strict_case_show_all(
 
 
 @pytest.mark.parametrize(
-    "characters, unicode_type, expected_output, strict_case",
+    "characters, unicode_type, expected_output, strict_case, reverse",
     [
-        ("hello", "Circled", "ⓗⓔⓛⓛⓞ", False),
-        ("hello", "Negative circled", "🅗🅔🅛🅛🅞", False),
-        ("he(lo", "Circled", "ⓗⓔ(ⓛⓞ", False),
-        ("💦a", "Circled", "💦ⓐ", False),
+        ("hello", "Circled", "ⓗⓔⓛⓛⓞ", False, False),
+        ("hello", "Negative circled", "🅗🅔🅛🅛🅞", False, False),
+        ("he(lo", "Circled", "ⓗⓔ(ⓛⓞ", False, False),
+        ("💦a", "Circled", "💦ⓐ", False, False),
     ],
 )
 def test_convert(
@@ -149,21 +149,25 @@ def test_convert(
     unicode_type: str,
     expected_output: str,
     strict_case: bool,
+    reverse: bool,
 ) -> None:
     """It converts characters to the specified Unicode type."""
     converted_character = converter.convert(
-        characters=characters, unicode_type=unicode_type, strict_case=strict_case
+        characters=characters,
+        unicode_type=unicode_type,
+        strict_case=strict_case,
+        reverse=reverse,
     )
     assert converted_character == expected_output
 
 
 @pytest.mark.parametrize(
-    "characters, unicode_type, expected_output, strict_case",
+    "characters, unicode_type, expected_output, strict_case, reverse",
     [
-        ("hello", "Circled", "ⓗⓔⓛⓛⓞ", True),
-        ("hello", "Negative circled", "hello", True),
-        ("he(lo", "Circled", "ⓗⓔ(ⓛⓞ", True),
-        ("💦a", "Circled", "💦ⓐ", True),
+        ("hello", "Circled", "ⓗⓔⓛⓛⓞ", True, False),
+        ("hello", "Negative circled", "hello", True, False),
+        ("he(lo", "Circled", "ⓗⓔ(ⓛⓞ", True, False),
+        ("💦a", "Circled", "💦ⓐ", True, False),
     ],
 )
 def test_strict_case_convert(
@@ -172,10 +176,14 @@ def test_strict_case_convert(
     unicode_type: str,
     expected_output: str,
     strict_case: bool,
+    reverse: bool,
 ) -> None:
     """It strictly converts characters to the specified Unicode type."""
     converted_character = converter.convert(
-        characters=characters, unicode_type=unicode_type, strict_case=strict_case
+        characters=characters,
+        unicode_type=unicode_type,
+        strict_case=strict_case,
+        reverse=reverse,
     )
     assert converted_character == expected_output
 
