@@ -115,6 +115,22 @@ def test_show_all(
     )
     assert converted_characters == expected_output
 
+
+@pytest.mark.parametrize(
+    "characters, expected_output, strict_case",
+    [
+        ("hello", {"Circled": "ⓗⓔⓛⓛⓞ", "Negative circled": "hello"}, True),
+        ("he(lo", {"Circled": "ⓗⓔ(ⓛⓞ", "Negative circled": "he(lo"}, True),
+        ("💦a", {"Circled": "💦ⓐ", "Negative circled": "💦a"}, True),
+    ],
+)
+def test_strict_case_show_all(
+    mock_toml_loads: Mock, characters: str, expected_output: str, strict_case: bool
+) -> None:
+    """It strictly converts characterse to all Unicode types."""
+    converted_characters = converter.show_all(
+        characters=characters, strict_case=strict_case
+    )
     assert converted_characters == expected_output
 
 
