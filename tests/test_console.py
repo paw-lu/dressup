@@ -23,6 +23,12 @@ def mock_typer_context_no_argument(mocker: MockFixture) -> Mock:
     """Fixture for mocking typer.Context without arguments."""
     mock = mocker.patch("typer.Context")
     mock.args = []
+    mock.params = {
+        "version": None,
+        "characters": None,
+        "strict_case": None,
+        "unicode_type": None,
+    }
     return mock
 
 
@@ -31,6 +37,12 @@ def mock_typer_context_with_argument(mocker: MockFixture) -> Mock:
     """Fixture for mocking typer.Context with arguments."""
     mock = mocker.patch("typer.Context")
     mock.args = ["SAmPlE"]
+    mock.params = {
+        "version": None,
+        "characters": None,
+        "strict_case": None,
+        "unicode_type": None,
+    }
     return mock
 
 
