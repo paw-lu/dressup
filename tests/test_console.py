@@ -60,6 +60,13 @@ def test_main_fails(runner: CliRunner) -> None:
     assert exit_code == 1
 
 
+def test_strict_only_fails(runner: CliRunner, mock_toml_loads: Mock) -> None:
+    """It exits with code 1 if strict-case but no argument provided."""
+    result = runner.invoke(console.app, ["--strict-case"])
+    exit_code = result.exit_code
+    assert exit_code == 1
+
+
 def test_no_argument_message(runner: CliRunner) -> None:
     """It prints a message when no argument is provided."""
     result = runner.invoke(console.app)
