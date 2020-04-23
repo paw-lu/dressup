@@ -113,20 +113,24 @@ def test_show_all(mock_toml_loads: Mock, characters: str, expected_output: str) 
 
 
 @pytest.mark.parametrize(
-    "characters, unicode_type, expected_output",
+    "characters, unicode_type, expected_output, strict_case",
     [
-        ("hello", "Circled", "ⓗⓔⓛⓛⓞ"),
-        ("hello", "Negative circled", "🅗🅔🅛🅛🅞"),
-        ("he(lo", "Circled", "ⓗⓔ(ⓛⓞ"),
-        ("💦a", "Circled", "💦ⓐ"),
+        ("hello", "Circled", "ⓗⓔⓛⓛⓞ", False),
+        ("hello", "Negative circled", "🅗🅔🅛🅛🅞", False),
+        ("he(lo", "Circled", "ⓗⓔ(ⓛⓞ", False),
+        ("💦a", "Circled", "💦ⓐ", False),
     ],
 )
 def test_convert(
-    mock_toml_loads: Mock, characters: str, unicode_type: str, expected_output: str
+    mock_toml_loads: Mock,
+    characters: str,
+    unicode_type: str,
+    expected_output: str,
+    strict_case: bool,
 ) -> None:
     """It converts characters to the specified Unicode type."""
     converted_character = converter.convert(
-        characters=characters, unicode_type=unicode_type
+        characters=characters, unicode_type=unicode_type, strict_case=strict_case
     )
     assert converted_character == expected_output
 
