@@ -201,5 +201,11 @@ def docs(session: Session) -> None:
     if builddir.exists():
         shutil.rmtree(builddir)
     install_package(session)
-    install(session, "recommonmark", "sphinx", "sphinx-autodoc-typehints")
+    install(
+        session,
+        "recommonmark",
+        "sphinx",
+        "sphinx-autodoc-typehints",
+        "sphinx-theme-material",
+    )
     session.run("sphinx-build", "docs", "docs/_build")

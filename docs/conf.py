@@ -11,3 +11,4 @@ extensions = [
     "sphinx.ext.napoleon",
     "sphinx_autodoc_typehints",
 ]
+html_theme = "material"

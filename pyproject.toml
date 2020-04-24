@@ -45,6 +45,7 @@ pep8-naming = "^0.10.0"
 flake8-rst-docstrings = "^0.0.13"
 pytest-mock = "^3.1.0"
 rope = "^0.16.0"
+sphinx-theme-material = "^1.1.2"
 
 [tool.poetry.scripts]
 dressup = "dressup.console:app"
