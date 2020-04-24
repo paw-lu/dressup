@@ -1,9 +1,8 @@
 Dress up
-==============================
+========
 
 .. toctree::
-   :hidden:
-   :maxdepth: 1
+   :maxdepth: 2
 
    reference
    CONTRIBUTING
