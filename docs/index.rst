@@ -23,6 +23,12 @@ run this command in your terminal:
 
    ❯ pip install dressup
 
+If you're using it primarily as a command-line tool,
+it's recommended you install it via `pipx <https://github.com/pipxproject/pipx>`_.
+
+.. code-block:: console
+
+   ❯ pipx install dressup
 
 Usage
 -----
