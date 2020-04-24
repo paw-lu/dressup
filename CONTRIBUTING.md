@@ -46,15 +46,15 @@ You need Python 3.6+ and the following tools:
 Install the package with development requirements:
 
 ```console
-$ poetry install
+❯ poetry install
 ```
 
 You can now run an interactive Python session,
 or the command-line interface:
 
 ```console
-$ poetry run python
-$ poetry run dressup
+❯ poetry run python
+❯ poetry run dressup
 ```
 
 [poetry]: https://python-poetry.org/
@@ -65,20 +65,20 @@ $ poetry run dressup
 Run the full test suite:
 
 ```console
-$ nox
+❯ nox
 ```
 
 List the available Nox sessions:
 
 ```console
-$ nox --list-sessions
+❯ nox --list-sessions
 ```
 
 You can also run a specific Nox session.
 For example, invoke the unit test suite like this:
 
 ```console
-$ nox --session=tests
+❯ nox --session=tests
 ```
 
 Unit tests are located in the `tests` directory,
@@ -101,7 +101,7 @@ Feel free to submit early, though—we can always iterate on this.
 You can ensure that your changes adhere to the code style by reformatting with [Black]:
 
 ```console
-$ nox --session=black
+❯ nox --session=black
 ```
 
 It is recommended to open an issue before starting work on anything.

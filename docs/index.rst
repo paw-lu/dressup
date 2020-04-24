@@ -22,7 +22,7 @@ run this command in your terminal:
 
 .. code-block:: console
 
-   $ pip install dressup
+   ❯ pip install dressup
 
 
 Usage
@@ -32,7 +32,7 @@ Dress up's usage looks like:
 
 .. code-block:: console
 
-   $ dressup [OPTIONS]
+   ❯ dressup [OPTIONS]
 
 .. option:: --version
 
