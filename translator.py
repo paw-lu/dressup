@@ -23,7 +23,7 @@ def remove_common_characters(string1: str, string2: str) -> Tuple[str, str]:
 
     Returns:
         Tuple[str, str]: The characters unique to ``string1`` and
-            ``string2``, respectively.
+        ``string2``, respectively.
 
     Raises:
         ValueError: If the length of ``string1`` does not equal that of
@@ -74,9 +74,9 @@ def read_file(file_path: Path) -> Dict[str, Dict[str, str]]:
 
     Returns:
         Dict[str, Dict[str, str]]: A dictionary representation of the
-            file. Keys are the transformation's name, and values are
-            dictionaries who's keys are the characters to be transformed
-            and their respective values are the transformed characters.
+        file. Keys are the transformation's name, and values are
+        dictionaries who's keys are the characters to be transformed and
+        their respective values are the transformed characters.
     """
     translator = {}
     with open(file_path) as file:

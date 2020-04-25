@@ -13,9 +13,9 @@ def _read_translator() -> MutableMapping[str, Any]:
 
     Returns:
         MutableMapping[str, Any]: A dictionary where the keys are the
-            unicode type, and the values are nested dictionaries with
-            the keys are typical characters and the values are their
-            converted unicode.
+        unicode type, and the values are nested dictionaries with the
+        keys are typical characters and the values are their
+        converted unicode.
     """
     toml_path = pathlib.Path(__file__).parent / pathlib.Path("translator.toml")
     toml_text = toml_path.read_text()
@@ -50,8 +50,10 @@ def show_all(
             "inverted" or "reverse". By default False.
 
     Returns:
-        Dict(str, str): A dictionary where the keys are unicode
-            character types and the values are the converted.
+        Dict(str, str): A dictionary with the converted characters.
+
+        The dictionary keys are the names of character types and the
+        values are the converted characters.
 
     Example:
         Show all possible conversions for the string "Hello".
