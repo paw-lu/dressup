@@ -1,11 +1,8 @@
 Dress up
 ========
 
-.. contents::
-   :local:
-   :backlinks: none
-
 .. toctree::
+   :caption: Contents
    :maxdepth: 2
 
    reference
@@ -148,3 +145,7 @@ Prior art
 ---------
 
 Pseudomappings were inspired by `Unicode Text Converter <https://qaz.wtf/u/convert.cgi>`_.
+
+Index
+~~~~~
+:ref:`genindex`

@@ -208,7 +208,7 @@ def docs(session: Session) -> None:
 
     install_package(session)
     install(
-        session, "recommonmark", "sphinx", "sphinx-autobuild", "sphinx-theme-material"
+        session, "recommonmark", "sphinx", "sphinx-autobuild", "sphinx-material",
     )
 
     if session.interactive:
