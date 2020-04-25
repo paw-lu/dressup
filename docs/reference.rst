@@ -1,10 +1,6 @@
 Reference
 =========
 
-.. contents::
-    :local:
-    :backlinks: none
-
 .. _CLI reference:
 
 Command-line usage
@@ -45,16 +41,10 @@ Dress up's command-line usage looks like:
    Show completion for the specified shell, to copy it or customize the installation.
 
 
-dressup.console
----------------
-
-.. automodule:: dressup.console
-   :members:
-
 .. _Library reference:
 
 dressup.converter
 -----------------
 
 .. automodule:: dressup.converter
-    :members:
+    :members: convert, show_all

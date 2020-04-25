@@ -1,16 +1,6 @@
 Dress up
 ========
 
-.. toctree::
-   :caption: Contents
-   :maxdepth: 2
-
-   reference
-   CONTRIBUTING
-   Code of Conduct <CODE_OF_CONDUCT>
-   license
-   Changelog <https://github.com/pscosta5/dressup/releases>
-
 Installation
 ------------
 
@@ -58,8 +48,8 @@ Return only a specific transformation by using the ``--type`` flag.
 
 .. code-block:: console
 
-   ❯ dressup Goodbye --type inverted
-   ƃoopqʎǝ
+   ❯ dressup Vibes --type inverted
+   𐌡ıqǝs
 
 See more options in the :ref:`CLI reference`, or by running
 
@@ -147,5 +137,19 @@ Prior art
 Pseudomappings were inspired by `Unicode Text Converter <https://qaz.wtf/u/convert.cgi>`_.
 
 Index
+-----
+
+.. toctree::
+   :caption: Contents
+   :maxdepth: 1
+
+   reference
+   CONTRIBUTING
+   Code of Conduct <CODE_OF_CONDUCT>
+   license
+   Changelog <https://github.com/pscosta5/dressup/releases>
+
+Index
 ~~~~~
+
 :ref:`genindex`
