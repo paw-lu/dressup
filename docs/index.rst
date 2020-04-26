@@ -1,6 +1,10 @@
 Dress up
 ========
 
+.. image:: images/logo.png
+
+Convert your strings to various Unicode characters.
+Turn "words" into "𝔴𝔬𝔯𝔡𝔰", "🆆🅾🆁🅳🆂", and "𝔀𝓸𝓻𝓭𝓼".
 Installation
 ------------
 
