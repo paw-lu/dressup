@@ -26,9 +26,9 @@ and "𝔀𝓸𝓻𝓭𝓼".
 
 1. [**Installation**](#installation)
 2. [**Usage**](#usage)
-   - [**Command-line**](#command-line)
-   - [**Library**](#library)
-3. [**Contributing**](#contribution)
+   - [**Command-line**](#command-line-usage)
+   - [**Library**](#library-usage)
+3. [**Contributing**](#contributing)
 
 ## Installation
 
