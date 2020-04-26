@@ -1,9 +1,17 @@
 """Test cases for the convert module."""
+import pathlib
 from unittest.mock import Mock
 
 import pytest
+import toml
 
 from dressup import converter, exceptions
+
+
+def test_valid_toml() -> None:
+    """It is a valid TOML file."""
+    file_text = pathlib.Path("src/dressup/translator.toml").read_text()
+    assert toml.loads(file_text)
 
 
 def test_read_translator(mock_toml_loads: Mock) -> None:
