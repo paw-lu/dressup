@@ -72,7 +72,7 @@ def main(
         None,
         "--version",
         "-v",
-        help="Return the package version.",
+        help="Display the version and exit.",
         callback=version_callback,
         is_eager=True,
     ),
