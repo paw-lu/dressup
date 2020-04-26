@@ -5,6 +5,7 @@ Dress up
 
 Convert your strings to various Unicode characters.
 Turn "words" into "𝔴𝔬𝔯𝔡𝔰", "🆆🅾🆁🅳🆂", and "𝔀𝓸𝓻𝓭𝓼".
+
 Installation
 ------------
 
@@ -22,8 +23,15 @@ it's recommended you install it via `pipx <https://github.com/pipxproject/pipx>`
 
    ❯ pipx install dressup
 
+Usage
+-----
+
+There are two primary ways to use Dress up—
+as a command-line tool,
+or as Python library.
+
 Command-line usage
-------------------
+^^^^^^^^^^^^^^^^^^
 
 Display all possible transformations by running:
 
@@ -62,7 +70,7 @@ See more options in the :ref:`CLI reference`, or by running
    ❯ dressup --help
 
 Autocompletion
---------------
+^^^^^^^^^^^^^^
 
 Dress up supports argument completions along with live previews.
 To enable autocompletion run.
@@ -93,16 +101,13 @@ if ``[TAB]`` is pressed the matching parameter values will be displayed below al
    math-sans-italic       -- 𝘞𝘰𝘳𝘥𝘴
 
 Library usage
--------------
-
-Dress up can also be used as a Python library.
+^^^^^^^^^^^^^
 
 To convert characters, use ``convert``.
 
 .. code-block:: python
 
    import dressup
-
 
    dressup.convert("Hello", unicode_type="negative circle")
 
@@ -115,7 +120,6 @@ To return all possible conversions, use ``show_all``.
 .. code-block:: python
 
    import dressup
-
 
    dressup.show_all("Hello")
 
