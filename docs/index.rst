@@ -26,8 +26,7 @@ it's recommended you install it via `pipx <https://github.com/pipxproject/pipx>`
 Usage
 -----
 
-There are two primary ways to use Dress up—
-as a command-line tool,
+There are two primary ways to use Dress up—as a command-line tool,
 or as Python library.
 
 Command-line usage
