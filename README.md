@@ -13,6 +13,8 @@
 Convert your strings to various Unicode characters. Turn "words" into "𝔴𝔬𝔯𝔡𝔰", "🆆🅾🆁🅳🆂",
 and "𝔀𝓸𝓻𝓭𝓼".
 
+![usage animation](docs/images/usage.gif)
+
 ---
 
 **Documentation:**
@@ -80,6 +82,8 @@ Return only a specific transformation by using the `--type` flag.
 ```
 
 #### Autocompletion
+
+![autocompletion animation](docs/images/autocompletion.gif)
 
 Dress up supports argument completions along with live previews. To enable
 autocompletion run.

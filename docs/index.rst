@@ -72,6 +72,8 @@ See more options in the :ref:`CLI reference`, or by running
 Autocompletion
 ^^^^^^^^^^^^^^
 
+.. image:: images/autocompletion.gif
+
 Dress up supports argument completions along with live previews.
 To enable autocompletion run.
 
