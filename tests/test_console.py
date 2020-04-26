@@ -162,7 +162,7 @@ def test_help_parameter_descriptions(runner: CliRunner) -> None:
         "  -s, --strict-case               Do not fallback to different cases.\n"
         "  -r, --reverse                   Reverse the output.\n"
         "  -t, --type TEXT                 The Unicode type to convert to.\n"
-        "  -v, --version                   Return the package version."
+        "  -v, --version                   Display the version and exit."
     )
     assert parameter_help.startswith(expected_message)
 
