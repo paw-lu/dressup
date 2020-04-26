@@ -13,7 +13,7 @@ run this command in your terminal:
 
 .. code-block:: console
 
-   ❯ pip install dressup
+   ❯ python -m pip install dressup
 
 If you're using it primarily as a command-line tool,
 it's recommended you install it via `pipx <https://github.com/pipxproject/pipx>`_.
