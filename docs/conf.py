@@ -35,7 +35,7 @@ html_sidebars = {
 }
 html_theme_options = {
     "nav_title": "Dress up",
-    "touch_icon": "images/dress.png",
+    "touch_icon": "images/dress.svg",
     "repo_url": "https://github.com/pscosta5/dressup",
     "repo_name": "Dress up",
     "repo_type": "github",
