@@ -1,3 +1,5 @@
+![Dress up logo](docs/images/logo.png)
+
 [![Tests](https://github.com/pscosta5/dressup/workflows/Tests/badge.svg)](https://github.com/pscosta5/dressup/actions?workflow=Tests)
 [![Codecov](https://codecov.io/gh/pscosta5/dressup/branch/master/graph/badge.svg)](https://codecov.io/gh/pscosta5/dressup)
 [![PyPI](https://img.shields.io/pypi/v/dressup.svg)](https://pypi.org/project/dressup/)
