@@ -36,7 +36,7 @@ Dress up's command-line usage looks like:
 
    Install completion for the specified shell.
 
-.. option:: ----show-completion [bash|zsh|fish|powershell|pwsh]
+.. option:: --show-completion [bash|zsh|fish|powershell|pwsh]
 
    Show completion for the specified shell, to copy it or customize the installation.
 
