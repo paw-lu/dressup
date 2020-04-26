@@ -12,6 +12,7 @@ extensions = [
     "sphinx.ext.linkcode",
     "sphinx.ext.napoleon",
 ]
+html_favicon = "images/dress.svg"
 
 
 def linkcode_resolve(domain: str, info: Dict[str, str]) -> str:
