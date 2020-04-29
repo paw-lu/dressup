@@ -916,7 +916,7 @@ description = "Material sphinx theme"
 name = "sphinx-material"
 optional = false
 python-versions = ">=3.6"
-version = "0.0.26"
+version = "0.0.28"
 
 [package.dependencies]
 beautifulsoup4 = "*"
@@ -1156,7 +1156,7 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["jaraco.itertools", "func-timeout"]
 
 [metadata]
-content-hash = "4b4691b75f0af9fb79c461054bf6d7edf7bc0e891a0a01e1854809e788ff90cf"
+content-hash = "2e25281a5e9167622607bb4b0e479923c3019803e86fe79efe240e5015799cf1"
 python-versions = "^3.6"
 
 [metadata.files]
@@ -1601,8 +1601,8 @@ sphinx-autobuild = [
     {file = "sphinx_autobuild-0.7.1-py2-none-any.whl", hash = "sha256:e60aea0789cab02fa32ee63c7acae5ef41c06f1434d9fd0a74250a61f5994692"},
 ]
 sphinx-material = [
-    {file = "sphinx_material-0.0.26-py3-none-any.whl", hash = "sha256:cb5dd5df5d2d664f6db449d841f8177a97ccd27f1fc9aae6f8df114efa2a32e8"},
-    {file = "sphinx_material-0.0.26.tar.gz", hash = "sha256:8b052ea4fe1c590b84e2307edc66b153199a375dfa7de6156d4ef416eb5e1266"},
+    {file = "sphinx_material-0.0.28-py3-none-any.whl", hash = "sha256:cc94f9a29408ca1cdb048db640fcb8fe5fb6479f253eadc2f902d7177ea2ac65"},
+    {file = "sphinx_material-0.0.28.tar.gz", hash = "sha256:0b5c6e0266d894f989b5f5dd609ca6d206a4037086aa8a110343beccb0446345"},
 ]
 sphinxcontrib-applehelp = [
     {file = "sphinxcontrib-applehelp-1.0.2.tar.gz", hash = "sha256:a072735ec80e7675e3f432fcae8610ecf509c5f1869d17e2eecff44389cdbc58"},
