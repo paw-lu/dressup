@@ -839,6 +839,14 @@ version = "1.14.0"
 
 [[package]]
 category = "dev"
+description = "A generic slugifier."
+name = "slugify"
+optional = false
+python-versions = "*"
+version = "0.0.1"
+
+[[package]]
+category = "dev"
 description = "A pure Python implementation of a sliding window memory map manager"
 name = "smmap"
 optional = false
@@ -916,12 +924,13 @@ description = "Material sphinx theme"
 name = "sphinx-material"
 optional = false
 python-versions = ">=3.6"
-version = "0.0.26"
+version = "0.0.29"
 
 [package.dependencies]
 beautifulsoup4 = "*"
 css-html-js-minify = "*"
 lxml = "*"
+slugify = "*"
 sphinx = ">=2.0"
 
 [package.dependencies.python-slugify]
@@ -1156,7 +1165,7 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["jaraco.itertools", "func-timeout"]
 
 [metadata]
-content-hash = "4b4691b75f0af9fb79c461054bf6d7edf7bc0e891a0a01e1854809e788ff90cf"
+content-hash = "d4b8dc6544f67ddafce78750f5b07c08b369ad81349f4950a633d1cf77499346"
 python-versions = "^3.6"
 
 [metadata.files]
@@ -1580,6 +1589,9 @@ six = [
     {file = "six-1.14.0-py2.py3-none-any.whl", hash = "sha256:8f3cd2e254d8f793e7f3d6d9df77b92252b52637291d0f0da013c76ea2724b6c"},
     {file = "six-1.14.0.tar.gz", hash = "sha256:236bdbdce46e6e6a3d61a337c0f8b763ca1e8717c03b369e87a7ec7ce1319c0a"},
 ]
+slugify = [
+    {file = "slugify-0.0.1.tar.gz", hash = "sha256:c5703cc11c1a6947536f3ce8bb306766b8bb5a84a53717f5a703ce0f18235e4c"},
+]
 smmap = [
     {file = "smmap-3.0.2-py2.py3-none-any.whl", hash = "sha256:52ea78b3e708d2c2b0cfe93b6fc3fbeec53db913345c26be6ed84c11ed8bebc1"},
     {file = "smmap-3.0.2.tar.gz", hash = "sha256:b46d3fc69ba5f367df96d91f8271e8ad667a198d5a28e215a6c3d9acd133a911"},
@@ -1601,8 +1613,8 @@ sphinx-autobuild = [
     {file = "sphinx_autobuild-0.7.1-py2-none-any.whl", hash = "sha256:e60aea0789cab02fa32ee63c7acae5ef41c06f1434d9fd0a74250a61f5994692"},
 ]
 sphinx-material = [
-    {file = "sphinx_material-0.0.26-py3-none-any.whl", hash = "sha256:cb5dd5df5d2d664f6db449d841f8177a97ccd27f1fc9aae6f8df114efa2a32e8"},
-    {file = "sphinx_material-0.0.26.tar.gz", hash = "sha256:8b052ea4fe1c590b84e2307edc66b153199a375dfa7de6156d4ef416eb5e1266"},
+    {file = "sphinx_material-0.0.29-py3-none-any.whl", hash = "sha256:ce744305bc67ca5e5c4d7d97ca48e34256c9979c7a6623a8a98b9fa92768f8d0"},
+    {file = "sphinx_material-0.0.29.tar.gz", hash = "sha256:d194f063b57d51cdaf81dfbd713ac9e69389082b3d400b74dc90dbb4ba64ef6d"},
 ]
 sphinxcontrib-applehelp = [
     {file = "sphinxcontrib-applehelp-1.0.2.tar.gz", hash = "sha256:a072735ec80e7675e3f432fcae8610ecf509c5f1869d17e2eecff44389cdbc58"},
