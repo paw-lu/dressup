@@ -8,6 +8,18 @@ import toml
 from dressup import converter, exceptions
 
 
+def test_translator_repr() -> None:
+    """Its string representation contains the init parameters."""
+    translator = converter.Translator({letter: "b" for letter in "ab"}, False)
+    assert str(translator) == "Translator({'a': 'b', 'b': 'b'}, False)"
+
+
+def test_default_translatortor() -> None:
+    """It returns an empty dictionary when provided to items."""
+    translator = converter.Translator()
+    assert translator == {}
+
+
 def test_strict_case_translator() -> None:
     """It returns the key when no match is found."""
     values = {"a": "<3"}

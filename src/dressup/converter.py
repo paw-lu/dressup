@@ -28,6 +28,17 @@ class Translator(dict):
         self.strict_case = strict_case
         pass
 
+    def __repr__(self) -> str:
+        """Representation of Translator."""
+        dict_repr = (
+            "{"
+            + ", ".join(
+                ": ".join((f"'{item}'", f"'{key}'")) for item, key in self.items()
+            )
+            + "}"
+        )
+        return f"Translator({dict_repr}, {self.strict_case})"
+
     def __missing__(self, key: str) -> str:
         """Return value in the case of a missing key.
 
