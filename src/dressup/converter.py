@@ -1,15 +1,64 @@
 """Convert Unicode characters."""
 import pathlib
 import re
-from typing import Any, Dict, MutableMapping
+from typing import Any, Dict, MutableMapping, Optional
 
 import toml
 
 from . import exceptions
 
 
-def _read_translator() -> MutableMapping[str, Any]:
+class Translator(dict):
+    """Translator for converting text to Unicode.
+
+    Attributes:
+        items (Dict[str, str]): Keys and values to prepopulate Translator.
+            Optional.
+        strict_case (bool): Whether to forbid characters from being
+            converted to an upper or lower case counterpart if an exact
+            match is not found. By default set to False.
+    """
+
+    def __init__(
+        self, items: Optional[Dict[str, str]] = None, strict_case: bool = False
+    ) -> None:
+        """Constructor."""
+        if items is not None:
+            self.update(items)
+        self.strict_case = strict_case
+        pass
+
+    def __missing__(self, key: str) -> str:
+        """Return value in the case of a missing key.
+
+        If ``strict_case`` is True, will return the key itself. If
+        False, will first try to return a value matching the upper or
+        lowercase variant of the key.
+
+        Args:
+            key (str): The key missing from Translator.
+
+        Returns:
+            str: The returned value.
+        """
+        if self.strict_case:
+            return key
+        else:
+            if key.upper() in self:
+                return self[key.upper()]
+            elif key.lower() in self:
+                return self[key.lower()]
+            else:
+                return key
+
+
+def _read_translator(strict_case: bool = False) -> MutableMapping[str, Any]:
     """Read translator from config file.
+
+    Args:
+        strict_case (bool): Whether to forbid characters from being
+            converted to an upper or lower case counterpart if an exact
+            match is not found. By default set to False.
 
     Returns:
         MutableMapping[str, Any]: A dictionary where the keys are the
@@ -19,7 +68,11 @@ def _read_translator() -> MutableMapping[str, Any]:
     """
     toml_path = pathlib.Path(__file__).parent / pathlib.Path("translator.toml")
     toml_text = toml_path.read_text()
-    translator = toml.loads(toml_text)
+    unicode_mapping = toml.loads(toml_text)
+    translator = {
+        unicode_type: Translator(unicode_mapping[unicode_type], strict_case=strict_case)
+        for unicode_type in unicode_mapping
+    }
     return translator
 
 
@@ -72,33 +125,17 @@ def show_all(
         'Ħɇłłø', 'Subscript': 'ₕₑₗₗₒ', 'Superscript': 'ᴴᵉˡˡᵒ',
         'Inverted': 'ɥǝןןo', 'Reversed': 'Hɘ⅃⅃o'}
     """
-    translator = _read_translator()
+    translator = _read_translator(strict_case=strict_case)
     if reverse:
         characters = characters[::-1]
-    if strict_case:
-        converted_characters = {
-            _format_names(character_type): "".join(
-                translator[normalize_text(character_type)].get(character, character)
-                for character in characters
-            )
-            for character_type in translator
-        }
-    else:
-        converted_characters = {
-            _format_names(character_type): "".join(
-                translator[normalize_text(character_type)].get(
-                    character,
-                    translator[normalize_text(character_type)].get(
-                        character.upper(),
-                        translator[normalize_text(character_type)].get(
-                            character.lower(), character
-                        ),
-                    ),
-                )
-                for character in characters
-            )
-            for character_type in translator
-        }
+    converted_characters = {
+        _format_names(character_type): "".join(
+            translator[normalize_text(character_type)][character]
+            for character in characters
+        )
+        for character_type in translator
+    }
+
     return converted_characters
 
 
