@@ -8,6 +8,27 @@ import toml
 from dressup import converter, exceptions
 
 
+def test_strict_case_translator() -> None:
+    """It returns the key when no match is found."""
+    values = {"a": "<3"}
+    translator = converter.Translator(values, strict_case=True)
+    assert translator["A"] == "A"
+
+
+def test_missing_translator_upper() -> None:
+    """It returns the upper case match when no match is found."""
+    values = {"A": "<3"}
+    translator = converter.Translator(values, strict_case=False)
+    assert translator["a"] == "<3"
+
+
+def test_missing_translator_lower() -> None:
+    """It returns the lower case match when no match is found."""
+    values = {"a": "<3"}
+    translator = converter.Translator(values, strict_case=False)
+    assert translator["A"] == "<3"
+
+
 def test_valid_toml() -> None:
     """It is a valid TOML file."""
     file_text = pathlib.Path("src/dressup/translator.toml").read_text()
