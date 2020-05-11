@@ -21,7 +21,7 @@ colorama = "^0.4.3"
 toml = "^0.10.0"
 
 [tool.poetry.dev-dependencies]
-pytest = "^5.3.2"
+pytest = "^5.4.2"
 coverage = {extras = ["toml"], version = "^5.0.1"}
 pytest-cov = "^2.8.1"
 flake8 = "^3.7.9"
