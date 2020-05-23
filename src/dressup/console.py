@@ -1,6 +1,10 @@
 """Command-line interface."""
 from typing import Generator, Tuple
 
+import rich.box
+import rich.console
+import rich.style
+import rich.table
 import typer
 from typer import Context
 
@@ -88,12 +92,25 @@ def main(
         else:
             raise typer.Exit(code=0)
     elif unicode_type is None:
+        console = rich.console.Console()
         converted_characters = converter.show_all(
             characters, strict_case=strict_case, reverse=reverse
         )
+        title_style = rich.style.Style(color="magenta", bold=True)
+        header_style = rich.style.Style(color="magenta")
+        border_style = rich.style.Style(color="magenta")
+        table = rich.table.Table(
+            title="Dress up",
+            title_style=title_style,
+            header_style=header_style,
+            border_style=border_style,
+            box=rich.box.ROUNDED,
+        )
+        for column_name in ("Style", "Conversion"):
+            table.add_column(column_name, justify="left")
         for character_type, converted_character in converted_characters.items():
-            typer.secho(f"\n{character_type}", fg=typer.colors.MAGENTA, bold=True)
-            typer.secho(f"\n{converted_character}")
+            table.add_row(character_type, converted_character)
+        console.print(table)
         pass
     else:
         try:
