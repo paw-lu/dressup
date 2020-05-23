@@ -214,14 +214,14 @@ def test_cli_conversion_output(runner: CliRunner, mock_toml_loads: Mock) -> None
     """It converts the characters."""
     result = runner.invoke(console.app, ["hello"])
     actual_output = result.stdout
-    expected_output = """
-    Circled
-
-    ⓗⓔⓛⓛⓞ
-
-    Negative circled
-
-    🅗🅔🅛🅛🅞
+    expected_output = f"""\
+                Dress up{" ":^13}
+    ╭──────────────────┬────────────╮
+    │ Style            │ Conversion │
+    ├──────────────────┼────────────┤
+    │ Circled          │ ⓗⓔⓛⓛⓞ      │
+    │ Negative circled │ 🅗🅔🅛🅛🅞      │
+    ╰──────────────────┴────────────╯
     """
     expected_output = textwrap.dedent(expected_output)
     assert actual_output == expected_output
@@ -231,14 +231,14 @@ def test_cli_conversion_output_strict(runner: CliRunner, mock_toml_loads: Mock) 
     """It strictly converts the characters."""
     result = runner.invoke(console.app, ["hello", "--strict-case"])
     actual_output = result.stdout
-    expected_output = """
-    Circled
-
-    ⓗⓔⓛⓛⓞ
-
-    Negative circled
-
-    hello
+    expected_output = f"""\
+                Dress up{" ":^13}
+    ╭──────────────────┬────────────╮
+    │ Style            │ Conversion │
+    ├──────────────────┼────────────┤
+    │ Circled          │ ⓗⓔⓛⓛⓞ      │
+    │ Negative circled │ hello      │
+    ╰──────────────────┴────────────╯
     """
     expected_output = textwrap.dedent(expected_output)
     assert actual_output == expected_output
@@ -250,14 +250,14 @@ def test_cli_conversion_output_reverse(
     """It converts reversed characters."""
     result = runner.invoke(console.app, ["hello", "--reverse"])
     actual_output = result.stdout
-    expected_output = """
-    Circled
-
-    ⓞⓛⓛⓔⓗ
-
-    Negative circled
-
-    🅞🅛🅛🅔🅗
+    expected_output = f"""\
+                Dress up{" ":^13}
+    ╭──────────────────┬────────────╮
+    │ Style            │ Conversion │
+    ├──────────────────┼────────────┤
+    │ Circled          │ ⓞⓛⓛⓔⓗ      │
+    │ Negative circled │ 🅞🅛🅛🅔🅗      │
+    ╰──────────────────┴────────────╯
     """
     expected_output = textwrap.dedent(expected_output)
     assert actual_output == expected_output
