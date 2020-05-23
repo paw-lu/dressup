@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "dressup"
-version = "0.1.0"
+version = "0.1.1"
 description = "Dress up"
 authors = ["Paulo S. Costa <Paulo.S.Costa.5@gmail.com>"]
 license = "MIT"
