@@ -25,7 +25,7 @@ rich = "^1.2.2"
 pytest = "^5.4.2"
 coverage = {extras = ["toml"], version = "^5.0.1"}
 pytest-cov = "^2.8.1"
-flake8 = "^3.8.1"
+flake8 = "^3.8.2"
 black = "^19.10b0"
 flake8-black = "^0.2.0"
 flake8-import-order = "^0.18.1"
