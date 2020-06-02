@@ -738,8 +738,8 @@ description = "Python type inferencer"
 marker = "python_version >= \"3.6\" and python_version < \"3.8\""
 name = "pytype"
 optional = false
-python-versions = "<3.8,>=3.5"
-version = "2020.5.13"
+python-versions = "<3.9,>=3.5"
+version = "2020.6.1"
 
 [package.dependencies]
 attrs = "*"
@@ -1187,7 +1187,7 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["jaraco.itertools", "func-timeout"]
 
 [metadata]
-content-hash = "cd2964ad8851ccc97a15b67bf70b602136194f02d187dd6dfa4913e31ee96a14"
+content-hash = "3bd436c6f8fb968678d53f00d33b074bf4b9e87ffd6f00979a0a80e950547eb1"
 python-versions = "^3.6"
 
 [metadata.files]
@@ -1549,7 +1549,7 @@ python-slugify = [
     {file = "python-slugify-4.0.0.tar.gz", hash = "sha256:a8fc3433821140e8f409a9831d13ae5deccd0b033d4744d94b31fea141bdd84c"},
 ]
 pytype = [
-    {file = "pytype-2020.5.13.tar.gz", hash = "sha256:e7c968c43df190f54a3ca82b09c026a41aba2d95164ff1ffe61c399bd0e216a5"},
+    {file = "pytype-2020.6.1.tar.gz", hash = "sha256:08ddb9940764492b701a8985c30437239eb2c34003448cca760769264f5ff2f8"},
 ]
 pytz = [
     {file = "pytz-2019.3-py2.py3-none-any.whl", hash = "sha256:1c557d7d0e871de1f5ccd5833f60fb2550652da6be2693c1e02300743d21500d"},
