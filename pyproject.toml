@@ -22,7 +22,7 @@ toml = "^0.10.1"
 rich = "^1.2.2"
 
 [tool.poetry.dev-dependencies]
-pytest = "^5.4.2"
+pytest = "^5.4.3"
 coverage = {extras = ["toml"], version = "^5.0.1"}
 pytest-cov = "^2.9.0"
 flake8 = "^3.8.2"
