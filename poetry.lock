@@ -821,7 +821,7 @@ description = "Render rich text, tables, progress bars, syntax highlighting, mar
 name = "rich"
 optional = false
 python-versions = ">=3.6,<4.0"
-version = "2.2.3"
+version = "2.2.4"
 
 [package.dependencies]
 colorama = ">=0.4.0,<0.5.0"
@@ -1604,8 +1604,8 @@ restructuredtext-lint = [
     {file = "restructuredtext_lint-1.3.0.tar.gz", hash = "sha256:97b3da356d5b3a8514d8f1f9098febd8b41463bed6a1d9f126cf0a048b6fd908"},
 ]
 rich = [
-    {file = "rich-2.2.3-py3-none-any.whl", hash = "sha256:7377f61cd82831a2ba531c38e60e8aedbbc0d01126622e94aff545d5798ae7e7"},
-    {file = "rich-2.2.3.tar.gz", hash = "sha256:62215e20e64b81e47c5c32e7b6431d2eabcd03965adf25f1940f7bc0e986a952"},
+    {file = "rich-2.2.4-py3-none-any.whl", hash = "sha256:165d1f867a157d5943c740262ef69edea022ba19c26fb853607639b5df0779a3"},
+    {file = "rich-2.2.4.tar.gz", hash = "sha256:14e05852cbe16c40c89959cbcac235f8033a8409a280ec88cec81e1bb91ebe4c"},
 ]
 rope = [
     {file = "rope-0.17.0.tar.gz", hash = "sha256:658ad6705f43dcf3d6df379da9486529cf30e02d9ea14c5682aa80eb33b649e1"},
