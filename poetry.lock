@@ -1095,7 +1095,7 @@ description = "Typer, build great CLIs. Easy to code. Based on Python type hints
 name = "typer"
 optional = false
 python-versions = ">=3.6"
-version = "0.2.1"
+version = "0.3.0"
 
 [package.dependencies]
 click = ">=7.1.1,<7.2.0"
@@ -1187,7 +1187,7 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["jaraco.itertools", "func-timeout"]
 
 [metadata]
-content-hash = "8d798ac282a26360b35076c4abc8ddb185a04f13eff433991ccc45a9ded43db2"
+content-hash = "081c15a3d6cfcb27fb89ad4836a6addba8d35d93037a9125589407f3d907eb35"
 python-versions = "^3.6"
 
 [metadata.files]
@@ -1599,7 +1599,6 @@ regex = [
     {file = "regex-2020.4.4.tar.gz", hash = "sha256:295badf61a51add2d428a46b8580309c520d8b26e769868b922750cf3ce67142"},
 ]
 requests = [
-    {file = "requests-2.23.0-py2.7.egg", hash = "sha256:5d2d0ffbb515f39417009a46c14256291061ac01ba8f875b90cad137de83beb4"},
     {file = "requests-2.23.0-py2.py3-none-any.whl", hash = "sha256:43999036bfa82904b6af1d99e4882b560e5e2c68e5c4b0aa03b655f3d7d73fee"},
     {file = "requests-2.23.0.tar.gz", hash = "sha256:b3f43d496c6daba4493e7c431722aeb7dbc6288f52a6e04e7b6023b0247817e6"},
 ]
@@ -1720,8 +1719,8 @@ typeguard = [
     {file = "typeguard-2.9.1.tar.gz", hash = "sha256:529ef3d88189cc457f4340388028412f71be8091c2c943465146d4170fb67288"},
 ]
 typer = [
-    {file = "typer-0.2.1-py3-none-any.whl", hash = "sha256:9b66756dfcc9e9f829a33f9019757225af0c8e87e1e692f103556335d5ae3b25"},
-    {file = "typer-0.2.1.tar.gz", hash = "sha256:a8c49418f20c1d1b04a34424dded86cebf1f87042a8e448c6faa63cf38b9c0af"},
+    {file = "typer-0.3.0-py3-none-any.whl", hash = "sha256:a2a7b4b6388debc2b7160c8b7a54368df85b56c3f1447846bad630e99d629ffc"},
+    {file = "typer-0.3.0.tar.gz", hash = "sha256:f025d6bbb2fcefaf861dec5a006e9b5128532f733b7f75b57b1fd803bed31cdd"},
 ]
 typing-extensions = [
     {file = "typing_extensions-3.7.4.2-py2-none-any.whl", hash = "sha256:f8d2bd89d25bc39dabe7d23df520442fa1d8969b82544370e03d88b5a591c392"},
