@@ -739,7 +739,7 @@ marker = "python_version >= \"3.6\" and python_version < \"3.8\""
 name = "pytype"
 optional = false
 python-versions = "<3.9,>=3.5"
-version = "2020.6.26"
+version = "2020.7.20"
 
 [package.dependencies]
 attrs = "*"
@@ -1187,7 +1187,7 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["jaraco.itertools", "func-timeout"]
 
 [metadata]
-content-hash = "081c15a3d6cfcb27fb89ad4836a6addba8d35d93037a9125589407f3d907eb35"
+content-hash = "720686678817c239b70a89980871e5e01634d123afc903bb12abc382d25704b1"
 python-versions = "^3.6"
 
 [metadata.files]
@@ -1552,7 +1552,13 @@ python-slugify = [
     {file = "python-slugify-4.0.0.tar.gz", hash = "sha256:a8fc3433821140e8f409a9831d13ae5deccd0b033d4744d94b31fea141bdd84c"},
 ]
 pytype = [
-    {file = "pytype-2020.6.26.tar.gz", hash = "sha256:1252c97c16c6bfcbb380b3c26c18982d86a6a75e06b1381120f110e57fdf6feb"},
+    {file = "pytype-2020.7.20-cp35-cp35m-macosx_10_14_x86_64.whl", hash = "sha256:783cc42579f034c62c662c4bcefe37a9e6df989dca12f87f64e40e5688561238"},
+    {file = "pytype-2020.7.20-cp35-cp35m-manylinux2014_x86_64.whl", hash = "sha256:8bbd58aab7ca50f4eb6a03d69939b81415bc81479638d2ebabf7f0e63cb607d0"},
+    {file = "pytype-2020.7.20-cp36-cp36m-macosx_10_14_x86_64.whl", hash = "sha256:8da8eb89e6ec0b0f4e546c6e463efd31b3df9c6a2a1ce160f5f457c4e9de28ee"},
+    {file = "pytype-2020.7.20-cp36-cp36m-manylinux2014_x86_64.whl", hash = "sha256:e93614bb3e38c9e2ed3b4646bd2a726c2b4d2b8a92bf74a1a76d435d67ef3ced"},
+    {file = "pytype-2020.7.20-cp37-cp37m-macosx_10_14_x86_64.whl", hash = "sha256:70ae9014de5609b2f00e19480671b1eacc048d46e458e53bc965fe324d57c87f"},
+    {file = "pytype-2020.7.20-cp37-cp37m-manylinux2014_x86_64.whl", hash = "sha256:0cdc97996759e9bf1389a3b0644c503fc38f581572a213c384511bf33d910d93"},
+    {file = "pytype-2020.7.20.tar.gz", hash = "sha256:2382e535b371338ea18f1fd5ab06e01bec4078ca62d5118f84d61d76a9413eda"},
 ]
 pytz = [
     {file = "pytz-2019.3-py2.py3-none-any.whl", hash = "sha256:1c557d7d0e871de1f5ccd5833f60fb2550652da6be2693c1e02300743d21500d"},
