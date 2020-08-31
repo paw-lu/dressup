@@ -731,7 +731,7 @@ marker = "python_version >= \"3.6\" and python_version < \"3.8\""
 name = "pytype"
 optional = false
 python-versions = "<3.9,>=3.5"
-version = "2020.6.26"
+version = "2020.8.28"
 
 [package.dependencies]
 attrs = "*"
@@ -1181,7 +1181,8 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["jaraco.itertools", "func-timeout"]
 
 [metadata]
-content-hash = "b61f760b5a55d11052bb5c259768441c96ef3308547edbb64b4dfe9bfcc0eb9e"
+content-hash = "eca22689ee16d2a2af428f2fac540b1c690ada4119cd271f27fe87a65f684808"
+lock-version = "1.0"
 python-versions = "^3.6"
 
 [metadata.files]
@@ -1542,7 +1543,13 @@ python-slugify = [
     {file = "python-slugify-4.0.0.tar.gz", hash = "sha256:a8fc3433821140e8f409a9831d13ae5deccd0b033d4744d94b31fea141bdd84c"},
 ]
 pytype = [
-    {file = "pytype-2020.6.26.tar.gz", hash = "sha256:1252c97c16c6bfcbb380b3c26c18982d86a6a75e06b1381120f110e57fdf6feb"},
+    {file = "pytype-2020.8.28-cp35-cp35m-macosx_10_14_x86_64.whl", hash = "sha256:0c12e077ad4c4a3970bf83f61bf2cb6033fc91e16fef6385ae4799dfaf4d537c"},
+    {file = "pytype-2020.8.28-cp35-cp35m-manylinux2014_x86_64.whl", hash = "sha256:3184ffbd3196b7cd60c89866dc497ff888f546e523df50f06f8257e528580ee0"},
+    {file = "pytype-2020.8.28-cp36-cp36m-macosx_10_14_x86_64.whl", hash = "sha256:dda3c464a31530f3b485433fe55ec43fb36ef8e0a6920174d8c7a5f286f036d6"},
+    {file = "pytype-2020.8.28-cp36-cp36m-manylinux2014_x86_64.whl", hash = "sha256:885f0639dcebe37d7edd60a7e520fcdd14d20320586a8151120ad0c97a5fbf4a"},
+    {file = "pytype-2020.8.28-cp37-cp37m-macosx_10_14_x86_64.whl", hash = "sha256:aec0bc7a25297c15d2ecb3d2ee095130eba38ea108949b28a0490a91b6f34486"},
+    {file = "pytype-2020.8.28-cp37-cp37m-manylinux2014_x86_64.whl", hash = "sha256:894a2367eedcbbd1cb9cc875279ba3325c8c28bc0c8f00edc02378fa7b86318b"},
+    {file = "pytype-2020.8.28.tar.gz", hash = "sha256:8ac53aef4453631dfb81980a7b7313d2835f602953f4a92aec1f97b5be6b7e10"},
 ]
 pytz = [
     {file = "pytz-2019.3-py2.py3-none-any.whl", hash = "sha256:1c557d7d0e871de1f5ccd5833f60fb2550652da6be2693c1e02300743d21500d"},
