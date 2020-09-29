@@ -731,7 +731,7 @@ marker = "python_version >= \"3.6\" and python_version < \"3.8\""
 name = "pytype"
 optional = false
 python-versions = "<3.9,>=3.5"
-version = "2020.6.26"
+version = "2020.9.24"
 
 [package.dependencies]
 attrs = "*"
@@ -1181,7 +1181,7 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["jaraco.itertools", "func-timeout"]
 
 [metadata]
-content-hash = "cf5054868422117bf5cbf0c6871fdbb49ad2a8a5c1d72e930c003b63f7a41981"
+content-hash = "d4325bb5a282c50889e3b56f1f2b84c865794a30b9d8a153cc495cbf517f2a3b"
 lock-version = "1.0"
 python-versions = "^3.6"
 
@@ -1543,7 +1543,15 @@ python-slugify = [
     {file = "python-slugify-4.0.0.tar.gz", hash = "sha256:a8fc3433821140e8f409a9831d13ae5deccd0b033d4744d94b31fea141bdd84c"},
 ]
 pytype = [
-    {file = "pytype-2020.6.26.tar.gz", hash = "sha256:1252c97c16c6bfcbb380b3c26c18982d86a6a75e06b1381120f110e57fdf6feb"},
+    {file = "pytype-2020.9.24-cp35-cp35m-macosx_10_14_x86_64.whl", hash = "sha256:de1e8be7623c3a52aa76bb0fe627ade03fba7d41481b3705a42b421bc20f4948"},
+    {file = "pytype-2020.9.24-cp35-cp35m-manylinux2014_x86_64.whl", hash = "sha256:e679d521c9d3ed2c42c62d8d15ab7b333d11c9d0b0f6a17ea43508a9ef8788f1"},
+    {file = "pytype-2020.9.24-cp36-cp36m-macosx_10_14_x86_64.whl", hash = "sha256:b69b1684ad658ddb21f33a37871c0ea71a8adaf7a2e66b57091ab8b7c8ab94f3"},
+    {file = "pytype-2020.9.24-cp36-cp36m-manylinux2014_x86_64.whl", hash = "sha256:cbd0d4ecd610781b6fb11105a0a2781eea8025403ed186ed43eb8d1b853ea952"},
+    {file = "pytype-2020.9.24-cp37-cp37m-macosx_10_14_x86_64.whl", hash = "sha256:6e3f6044211b58bcf5f71087cdfc704a0f66fc84e26cde2642836d342c163702"},
+    {file = "pytype-2020.9.24-cp37-cp37m-manylinux2014_x86_64.whl", hash = "sha256:513a3a11718632e5fa44a866a488f9e09aaf0be0460e8cbecddb15631ecd3542"},
+    {file = "pytype-2020.9.24-cp38-cp38-macosx_10_14_x86_64.whl", hash = "sha256:928c2fba3b9102fd279b6dfb632f5baca7917e80c57cf8b9eb25369f8c62317c"},
+    {file = "pytype-2020.9.24-cp38-cp38-manylinux2014_x86_64.whl", hash = "sha256:4948600946302ed929943ba7d2cf93e6d5bfa1e45232187d76fb119e86b92a1b"},
+    {file = "pytype-2020.9.24.tar.gz", hash = "sha256:438583c645fce1945606e9c16e6b2cce2cf16b31375080c9ef8bc7f5f036e7be"},
 ]
 pytz = [
     {file = "pytz-2019.3-py2.py3-none-any.whl", hash = "sha256:1c557d7d0e871de1f5ccd5833f60fb2550652da6be2693c1e02300743d21500d"},
