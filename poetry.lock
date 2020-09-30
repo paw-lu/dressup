@@ -527,7 +527,7 @@ marker = "python_version >= \"3.6\" and python_version < \"3.8\""
 name = "ninja"
 optional = false
 python-versions = "*"
-version = "1.9.0.post1"
+version = "1.10.0.post2"
 
 [[package]]
 category = "dev"
@@ -731,12 +731,12 @@ marker = "python_version >= \"3.6\" and python_version < \"3.8\""
 name = "pytype"
 optional = false
 python-versions = "<3.9,>=3.5"
-version = "2020.6.26"
+version = "2020.9.29"
 
 [package.dependencies]
 attrs = "*"
 importlab = ">=0.5.1"
-ninja = "*"
+ninja = ">=1.10.0.post2"
 pyyaml = ">=3.11"
 six = "*"
 typed_ast = "*"
@@ -1173,7 +1173,7 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["jaraco.itertools", "func-timeout"]
 
 [metadata]
-content-hash = "71d6eeaa8174d3926470b5b0f91e879b9230ac281bc610710223d763d2418fea"
+content-hash = "819b818e7085f7208218d670e64501484c03a74723f3104a7dabf1bb5b3e1b7b"
 lock-version = "1.0"
 python-versions = "^3.6"
 
@@ -1457,17 +1457,17 @@ networkx = [
     {file = "networkx-2.4.tar.gz", hash = "sha256:f8f4ff0b6f96e4f9b16af6b84622597b5334bf9cae8cf9b2e42e7985d5c95c64"},
 ]
 ninja = [
-    {file = "ninja-1.9.0.post1-py2-none-macosx_10_6_x86_64.whl", hash = "sha256:0184e69a70bb055621935b935f967b3dc4e189c8f1494d9ea0b90ed15d0308c4"},
-    {file = "ninja-1.9.0.post1-py2-none-manylinux1_i686.whl", hash = "sha256:35d3c2fd77e9271bbfb01beb2c8b733ca647356369da41bb095e14b0369ea3cf"},
-    {file = "ninja-1.9.0.post1-py2-none-manylinux1_x86_64.whl", hash = "sha256:a998d98ffd7262e03be4655e742fa918af93fb19ac36e9140afc0fe8190920a6"},
-    {file = "ninja-1.9.0.post1-py2-none-win32.whl", hash = "sha256:0d700c1471f9771978415cab503dc6b55e6267dc21428865c9a8f1a906f3a06d"},
-    {file = "ninja-1.9.0.post1-py2-none-win_amd64.whl", hash = "sha256:fd72664f0e2506f2c8002f2ee67ddd50b87604fe8c1bd04d2108dfeacc82420d"},
-    {file = "ninja-1.9.0.post1-py3-none-macosx_10_6_x86_64.whl", hash = "sha256:9090b6695d86643354cbd394ef835f40c0179cc24969d09446eae7931b702f12"},
-    {file = "ninja-1.9.0.post1-py3-none-manylinux1_i686.whl", hash = "sha256:965bf62d59f3794306b40dc08e31a9286650cff0b11b44acd0a61e61f6030553"},
-    {file = "ninja-1.9.0.post1-py3-none-manylinux1_x86_64.whl", hash = "sha256:75ebbbaeb1b3298bf001cc7866555d88ba33bbdab4cb99eae1e2a59efe23f47b"},
-    {file = "ninja-1.9.0.post1-py3-none-win32.whl", hash = "sha256:a8503e5fc4f742520e5b3389324e9710eecbc9fa60956b7034adaf1f0650ba3f"},
-    {file = "ninja-1.9.0.post1-py3-none-win_amd64.whl", hash = "sha256:db31cef1eb979e4fe4539046cf04311e00f271f8687bde7dfb64d85f4e4d2b1e"},
-    {file = "ninja-1.9.0.post1.tar.gz", hash = "sha256:6ef795816ef3cd3a2def4c4b8e5f1fb7e470bb913c0bae7bb38afe498d0075aa"},
+    {file = "ninja-1.10.0.post2-py2-none-macosx_10_6_x86_64.whl", hash = "sha256:a1a9d9455623a3f45557fff6eb5abb3e70910dde28cfb9239e3ca14249149f55"},
+    {file = "ninja-1.10.0.post2-py2-none-manylinux1_i686.whl", hash = "sha256:99c6102ae9a8981afe4d06f92508dbeab1e28ec89783fb703411166f4e13c9ee"},
+    {file = "ninja-1.10.0.post2-py2-none-manylinux1_x86_64.whl", hash = "sha256:4252ce532304841e47478bb61710fcf9940cf2c91731303490762b6e4f23fd2b"},
+    {file = "ninja-1.10.0.post2-py2-none-win32.whl", hash = "sha256:24acc95359308d11243386cf9f076bdc95f438ef6a4e0e357e7c122c5e02816d"},
+    {file = "ninja-1.10.0.post2-py2-none-win_amd64.whl", hash = "sha256:16fc1bea52a36a91a0e80c3b221d2c1bc9bcf04d0564da9344e349b8c5efd5c6"},
+    {file = "ninja-1.10.0.post2-py3-none-macosx_10_6_x86_64.whl", hash = "sha256:1d9ed3b5fdeb646516f54bec92453dcb3000d6771c2fea56451444c988a23e29"},
+    {file = "ninja-1.10.0.post2-py3-none-manylinux1_i686.whl", hash = "sha256:5c3a8cb54aaaf5d4f692d65121ef47b3e43dea123a6563153d9d97631c0adf4f"},
+    {file = "ninja-1.10.0.post2-py3-none-manylinux1_x86_64.whl", hash = "sha256:fb1ae96811a9b73773014b8a21d710b89d7d5f765427a5e2541e7fb9d530fdd5"},
+    {file = "ninja-1.10.0.post2-py3-none-win32.whl", hash = "sha256:06a72090f5c5516e57f12699644179504a77585bed6d5f8be9e67219a398ec80"},
+    {file = "ninja-1.10.0.post2-py3-none-win_amd64.whl", hash = "sha256:c6059bd04ad235e2326b39bc71bb7989de8d565084b5f269557704747b2910fa"},
+    {file = "ninja-1.10.0.post2.tar.gz", hash = "sha256:621fd73513a9bef0cb82e8c531a29ef96580b4d6e797f833cce167054ad812f8"},
 ]
 packaging = [
     {file = "packaging-20.3-py2.py3-none-any.whl", hash = "sha256:82f77b9bee21c1bafbf35a84905d604d5d1223801d639cf3ed140bd651c08752"},
@@ -1535,7 +1535,15 @@ python-slugify = [
     {file = "python-slugify-4.0.0.tar.gz", hash = "sha256:a8fc3433821140e8f409a9831d13ae5deccd0b033d4744d94b31fea141bdd84c"},
 ]
 pytype = [
-    {file = "pytype-2020.6.26.tar.gz", hash = "sha256:1252c97c16c6bfcbb380b3c26c18982d86a6a75e06b1381120f110e57fdf6feb"},
+    {file = "pytype-2020.9.29-cp35-cp35m-macosx_10_14_x86_64.whl", hash = "sha256:c424a17bd6d1a559291ad22cc2a91596ded5d8653665894d7a1cedf976303ff4"},
+    {file = "pytype-2020.9.29-cp35-cp35m-manylinux2014_x86_64.whl", hash = "sha256:fa53cf1ee3134368c4a330d75ebb9a84acf8126ea5ec102795087924cfcf5cec"},
+    {file = "pytype-2020.9.29-cp36-cp36m-macosx_10_14_x86_64.whl", hash = "sha256:ceec03a974f3b728701a85e365a21e62a41143d95d0b099cc23bc490929bf85e"},
+    {file = "pytype-2020.9.29-cp36-cp36m-manylinux2014_x86_64.whl", hash = "sha256:e1dd3e387b850084305d2fb1c55b946d603b98b3bc0dbe57e8b7fe158f9e2cf6"},
+    {file = "pytype-2020.9.29-cp37-cp37m-macosx_10_14_x86_64.whl", hash = "sha256:6aeb435f64fc3ab5fbd8a9997f64068e9c78e8d4691459cf46c75c6a7d560ccc"},
+    {file = "pytype-2020.9.29-cp37-cp37m-manylinux2014_x86_64.whl", hash = "sha256:cd781459c3000a3ffe54346471eb6e8ff1a29c2658d9d0aab43ea2ec4eebf12e"},
+    {file = "pytype-2020.9.29-cp38-cp38-macosx_10_14_x86_64.whl", hash = "sha256:2849c861cc3b8a795356a68d9f144634e6e6f0a82ecf81842ba7ec16481bded0"},
+    {file = "pytype-2020.9.29-cp38-cp38-manylinux2014_x86_64.whl", hash = "sha256:d5550ad4e26794780561e91548ed11ef059ebfadf52aa09c0b61b05ba3a1488a"},
+    {file = "pytype-2020.9.29.tar.gz", hash = "sha256:b44c0904160c6b55ee3f9e00227719a62bb4e3388ae54220da2e0609388325fe"},
 ]
 pytz = [
     {file = "pytz-2019.3-py2.py3-none-any.whl", hash = "sha256:1c557d7d0e871de1f5ccd5833f60fb2550652da6be2693c1e02300743d21500d"},
