@@ -45,7 +45,7 @@ pep8-naming = "^0.11.1"
 flake8-rst-docstrings = "^0.0.13"
 pytest-mock = "^3.1.1"
 rope = "^0.17.0"
-sphinx-autobuild = "^0.7.1"
+sphinx-autobuild = "^2021.3.14"
 sphinx-material = "^0.0.30"
 
 [tool.poetry.scripts]
