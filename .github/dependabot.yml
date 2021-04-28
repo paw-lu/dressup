@@ -1,0 +1,50 @@
+version: 2
+updates:
+- package-ecosystem: pip
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: flake8-rst-docstrings
+    versions:
+    - 0.0.14
+    - 0.1.1
+    - 0.1.2
+  - dependency-name: pytype
+    versions:
+    - 2021.1.21
+    - 2021.1.28
+    - 2021.2.19
+    - 2021.2.23
+    - 2021.2.9
+    - 2021.3.10
+    - 2021.3.22
+    - 2021.3.3
+    - 2021.4.1
+    - 2021.4.9
+  - dependency-name: sphinx
+    versions:
+    - 3.4.3
+    - 3.5.0
+    - 3.5.1
+    - 3.5.2
+    - 3.5.3
+  - dependency-name: darglint
+    versions:
+    - 1.5.8
+    - 1.6.0
+    - 1.7.0
+  - dependency-name: xdoctest
+    versions:
+    - 0.15.2
+    - 0.15.3
+  - dependency-name: coverage
+    versions:
+    - "5.4"
+  - dependency-name: pytest-mock
+    versions:
+    - 3.5.1
+  - dependency-name: sphinx-autobuild
+    versions:
+    - 2020.9.1
