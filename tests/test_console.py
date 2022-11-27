@@ -146,9 +146,11 @@ def test_help_message(runner: CliRunner) -> None:
     help_message = result.stdout
     expected_messages = (
         "Convert characters to different Unicode types.",
-        "If --type is specified, convert to a specific type."
+        "If --type is specified, convert to a specific type.",
     )
-    assert all(expected_message in help_message for expected_message in expected_messages)
+    assert all(
+        expected_message in help_message for expected_message in expected_messages
+    )
 
 
 def test_help_parameter_descriptions(runner: CliRunner) -> None:

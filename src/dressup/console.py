@@ -62,7 +62,10 @@ def complete_type(
 def main(
     characters: str = typer.Argument(None),
     strict_case: bool = typer.Option(
-        False, "--strict-case", "-s", help="Do not fallback to different cases.",
+        False,
+        "--strict-case",
+        "-s",
+        help="Do not fallback to different cases.",
     ),
     reverse: bool = typer.Option(False, "--reverse", "-r", help="Reverse the output."),
     unicode_type: str = typer.Option(
@@ -123,8 +126,9 @@ def main(
         except exceptions.InvalidUnicodeTypeError as error:
             exception_message = str(error).replace("_", "-")
             typer.secho(
-                exception_message, fg=typer.colors.BRIGHT_RED,
+                exception_message,
+                fg=typer.colors.BRIGHT_RED,
             )
-            raise typer.Exit(code=1)
+            raise typer.Exit(code=1) from error
         typer.echo(converted_characters)
         pass
