@@ -143,13 +143,12 @@ def test_help_succeeds(runner: CliRunner) -> None:
 def test_help_message(runner: CliRunner) -> None:
     """It gives a message when "--help" is called."""
     result = runner.invoke(console.app, ["--help"])
-    output = result.stdout
-    help_message = "\n\n".join(output.split("\n\n")[1:3])
-    expected_message = (
-        "  Convert characters to different Unicode types.\n\n"
-        "  If --type is specified, convert to a specific type."
+    help_message = result.stdout
+    expected_messages = (
+        "Convert characters to different Unicode types.",
+        "If --type is specified, convert to a specific type."
     )
-    assert expected_message == help_message
+    assert all(expected_message in help_message for expected_message in expected_messages)
 
 
 def test_help_parameter_descriptions(runner: CliRunner) -> None:
@@ -159,7 +158,7 @@ def test_help_parameter_descriptions(runner: CliRunner) -> None:
     expected_parameters = (
         "--strict-case",
         "--reverse",
-        "--type TEXT",
+        "--type",
         "--version",
     )
     assert all(parameter in output for parameter in expected_parameters)
