@@ -1,16 +1,15 @@
 """Nox sessions."""
 import contextlib
-from pathlib import Path
 import shutil
 import tempfile
+from pathlib import Path
 from typing import Iterator
 
 import nox
 from nox.sessions import Session
 
-
 package = "dressup"
-python_versions = ["3.8", "3.7", "3.6"]
+python_versions = ["3.8", "3.9", "3.10"]
 nox.options.sessions = "lint", "safety", "mypy", "pytype", "tests", "xdoctest"
 locations = "src", "tests", "noxfile.py", "docs/conf.py", "translator.py"
 
@@ -41,7 +40,8 @@ class Poetry:
                 "poetry",
                 "export",
                 *args,
-                "--format=requirements.txt",
+                "--format=constraints.txt",
+                "--without-hashes",
                 f"--output={requirements.name}",
                 external=True,
             )
@@ -140,7 +140,7 @@ def lint(session: Session) -> None:
 def safety(session: Session) -> None:
     """Scan dependencies for insecure packages."""
     poetry = Poetry(session)
-    with poetry.export("--dev", "--without-hashes") as requirements:
+    with poetry.export("--dev") as requirements:
         install(session, "safety")
         session.run("safety", "check", f"--file={requirements}", "--bare")
 
@@ -207,9 +207,7 @@ def docs(session: Session) -> None:
         shutil.rmtree(builddir)
 
     install_package(session)
-    install(
-        session, "recommonmark", "sphinx", "sphinx-autobuild", "sphinx-material",
-    )
+    install(session, "recommonmark", "sphinx", "sphinx-autobuild", "sphinx-material")
 
     if session.interactive:
         session.run("sphinx-autobuild", *args)
