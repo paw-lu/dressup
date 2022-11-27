@@ -232,12 +232,12 @@ def convert(
         characters = characters[::-1]
     try:
         type_mapping = translator[unicode_type]
-    except KeyError:
+    except KeyError as error:
         valid_types = ", ".join(translator.keys())
         raise exceptions.InvalidUnicodeTypeError(
             f"'{unicode_type}' is not a valid Unicode type."
             f" Valid types are {valid_types}."
-        )
+        ) from error
     if strict_case:
         converted_character = "".join(
             type_mapping.get(character, character) for character in characters

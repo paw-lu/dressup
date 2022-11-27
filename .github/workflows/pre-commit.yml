@@ -7,25 +7,31 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v1
         with:
-          python-version: "3.8"
+          python-version: "3.10"
       - run: >-
           pip install
-          poetry==1.0.5
-          pre-commit==2.2.0
-      - name: set PYTHON_VERSION_HASH
+          poetry==1.2.2
+          pre-commit==2.20.0
+      - name: Compute pre-commit cache key
+        id: pre-commit-cache
+        shell: python
         run: |
-          echo "::set-env name=PYTHON_VERSION_HASH::$(python -c '
-            import hashlib
-            import sys
+          import hashlib
+          import sys
 
-            payload = sys.version.encode() + sys.executable.encode()
-            digest = hashlib.sha256(payload).hexdigest()
+          python = "py{}.{}".format(*sys.version_info[:2])
+          payload = sys.version.encode() + sys.executable.encode()
+          digest = hashlib.sha256(payload).hexdigest()
+          result = "${{ runner.os }}-{}-{}-pre-commit".format(python, digest[:8])
 
-            print(digest)
-          ')"
-      - uses: actions/cache@v1
+          print("::set-output name=result::{}".format(result))
+
+      - name: Restore pre-commit cache
+        uses: actions/cache@v3
         with:
           path: ~/.cache/pre-commit
-          key: pre-commit-${{ env.PYTHON_VERSION_HASH }}-${{ hashFiles('.pre-commit-config.yaml') }}
+          key: ${{ steps.pre-commit-cache.outputs.result }}-${{ hashFiles('.pre-commit-config.yaml') }}
+          restore-keys: |
+            ${{ steps.pre-commit-cache.outputs.result }}-
       - run: poetry install --ansi
       - run: pre-commit run --all-files --show-diff-on-failure --color=always

@@ -140,31 +140,6 @@ def test_help_succeeds(runner: CliRunner) -> None:
     assert exit_code == 0
 
 
-def test_help_message(runner: CliRunner) -> None:
-    """It gives a message when "--help" is called."""
-    result = runner.invoke(console.app, ["--help"])
-    output = result.stdout
-    help_message = "\n\n".join(output.split("\n\n")[1:3])
-    expected_message = (
-        "  Convert characters to different Unicode types.\n\n"
-        "  If --type is specified, convert to a specific type."
-    )
-    assert expected_message == help_message
-
-
-def test_help_parameter_descriptions(runner: CliRunner) -> None:
-    """It describes the parameters when "--help" is called."""
-    result = runner.invoke(console.app, ["--help"])
-    output = result.stdout
-    expected_parameters = (
-        "--strict-case",
-        "--reverse",
-        "--type TEXT",
-        "--version",
-    )
-    assert all(parameter in output for parameter in expected_parameters)
-
-
 def test_complete_type(
     mock_typer_context_no_argument: Mock, mock_toml_loads: Mock
 ) -> None:

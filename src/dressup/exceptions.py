@@ -1,15 +1,15 @@
 """Exceptions for library."""
 
 
-class DressUpException(Exception):
+class DressUpError(Exception):
     """Base exception for all exceptions raised by the library."""
 
     def __repr__(self) -> str:
-        """Representation of DressUpException."""
-        return "DressUpException()"
+        """Representation of DressUpError."""
+        return "DressUpError()"
 
 
-class InvalidUnicodeTypeError(DressUpException, ValueError):
+class InvalidUnicodeTypeError(DressUpError, ValueError):
     """The provided unicode type does not exist."""
 
     def __repr__(self) -> str:
