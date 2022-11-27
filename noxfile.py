@@ -187,14 +187,14 @@ def xdoctest(session: Session) -> None:
     session.run("python", "-m", "xdoctest", package, *args)
 
 
-@nox.session(python="3.8")
+@nox.session(python=python_versions[-1])
 def coverage(session: Session) -> None:
     """Upload coverage data."""
     install(session, "coverage[toml]")
     session.run("coverage", "xml", "--fail-under=0")
 
 
-@nox.session(python="3.8")
+@nox.session(python=python_versions[-1])
 def docs(session: Session) -> None:
     """Build the documentation."""
     args = session.posargs or ["docs", "docs/_build"]
