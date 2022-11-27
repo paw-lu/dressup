@@ -15,4 +15,4 @@ jobs:
           architecture: x64
       - run: pip install nox==2022.11.21
       - run: pip install poetry==1.2.2
-      - run: nox --force-color
+      - run: nox --force-color --python=${{ matrix.python-version }}
